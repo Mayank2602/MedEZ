@@ -45,23 +45,34 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, username } = req.body;
 
     const resp = await User.findOne({ email });
-    if (!resp) {
-      return res.status(400).send({ msg: "Invalid Credentials" });
-    }
-    const isPasswordCorrect = await bcrypt.compare(password, resp.password);
-    if (!isPasswordCorrect) {
-      return res.status(400).send({ msg: "Invalid Credentials" });
+    if (resp) {
+      const token = jwt.sign({ userId: resp._id }, process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_LIFETIME,
+      });
+      return res.status(200).json({
+        token,
+      });
     }
 
-    const token = jwt.sign({ userId: resp._id }, process.env.JWT_SECRET, {
+    const newUser = await User.create({
+      username,
+      email,
+    });
+    //console.log(newUser);
+    // creating json web token to store in frontend
+    const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_LIFETIME,
     });
+
     res.status(200).json({
       token,
     });
+    
+
+   
   } catch (error) {
     return res.status(400).send({ msg: "Server Error" });
   }

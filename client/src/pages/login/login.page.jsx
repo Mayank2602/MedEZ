@@ -10,41 +10,70 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import { loginUser } from "../../features/user/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { accessToken, loginUser } from "../../features/user/userSlice";
 import { setOption } from "../../features/navitem/navitemSlice";
-
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 const theme = createTheme();
 
 export default function Login() {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const token = useSelector((store) => store.user.token);
-    
-    useEffect(() => {
-      if (token) {
-        setTimeout(() => {
-          navigate("/dashboard");
-        }, 1000);
-      }
-      dispatch(setOption('Login'));
-      // eslint-disable-next-line
-    }, [token]);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const token = useSelector((store) => store.user.token);
+  const access_token = useSelector((store) => store.user.access_token);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+  const login = useGoogleLogin({
+    onSuccess: (tokenResponse) => {
+      //console.log(tokenResponse);
+      dispatch(accessToken(tokenResponse.access_token));
+    },
+  });
+
+  useEffect(
+    () => {
+      if (access_token) {
+        axios
+          .get(
+            `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${access_token}`,
+            {
+              headers: {
+                Authorization: `Bearer ${access_token}`,
+                Accept: "application/json",
+              },
+            }
+          )
+          .then((res) => {
+            handleLogin(res.data);
+          })
+          .catch((err) => console.log(err));
+      }
+    },
+    //eslint-disable-next-line
+    [access_token]
+  );
+  useEffect(() => {
+    if (token && access_token) {
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1000);
+    }
+    dispatch(setOption("Login"));
+    // eslint-disable-next-line
+  }, [token, access_token]);
+
+  const handleLogin = (data) => {
     console.log({
-      email: data.get("email"),
-      password: data.get("password"),
+      username: data.name,
+      email: data.email,
     });
     const userObj = {
-      email: data.get("email").trim(),
-      password: data.get("password"),
+      username: data.name,
+      email: data.email,
     };
-    if (!userObj.email || !userObj.password) return;
+    if (!userObj.email || !userObj.username) return;
     dispatch(loginUser(userObj));
   };
 
@@ -52,7 +81,11 @@ export default function Login() {
     <ThemeProvider theme={theme}>
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
-        <Box
+        <div>
+          <button onClick={() => login()}>Sign in with Google 🚀 </button>
+        </div>
+
+        {/* <Box
           sx={{
             marginTop: 8,
             display: "flex",
@@ -114,7 +147,7 @@ export default function Login() {
               </Grid>
             </Grid>
           </Box>
-        </Box>
+        </Box> */}
       </Container>
     </ThemeProvider>
   );

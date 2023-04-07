@@ -85,7 +85,7 @@ function DrawerAppBar(props) {
             component="div"
             sx={{ flexGrow: 1, display:'block' }}
           >
-            MUI
+            MedEZ
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {token?<>{navItemsAuth.map((item) => (

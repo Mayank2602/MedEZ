@@ -1,18 +1,22 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { registerUserThunk, loginUserThunk, loadUserThunk } from "./userThunk";
 import { toast } from "react-toastify";
-
+import { googleLogout } from '@react-oauth/google';
 
 import {
   addTokenToLocalStorage,
   getTokenFromLocalStorage,
   removeTokenFromLocalStorage,
+  addAccessTokenToLocalStorage,
+  getAccessTokenFromLocalStorage,
+  removeAccessTokenFromLocalStorage,
 } from "../../utils/localStorage";
 
 const initialState = {
   isLoading: false,
   user: null,
   token: getTokenFromLocalStorage(),
+  access_token : getAccessTokenFromLocalStorage(),
 };
 
 export const registerUser = createAsyncThunk("user/registerUser", registerUserThunk);
@@ -26,9 +30,16 @@ const userSlice = createSlice({
     logoutUser: (state) => {
       state.user = null;
       state.token = null;
+      state.access_token = null;
+      googleLogout();
       removeTokenFromLocalStorage();
+      removeAccessTokenFromLocalStorage();
       toast.success("Logout Successfull");
     },
+    accessToken: (state, {payload}) => {
+      state.access_token = payload;
+      addAccessTokenToLocalStorage(payload);
+    }
    
   },
   extraReducers: {
@@ -76,5 +87,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { logoutUser } = userSlice.actions;
+export const { logoutUser,accessToken } = userSlice.actions;
 export default userSlice.reducer;
