@@ -14,8 +14,7 @@ export const loadResultThunk = async (medicineName, thunkAPI) => {
 
 export const uploadFileThunk = async(file, thunkAPI) => {
     try{
-        console.log(file)
-        const resp = await axios.post("/api/search/multiple",file,
+        const resp = await axios.post("/api/search/upload",file,
         {
             headers: {
                 'Access-Control-Allow-Origin': '*',

@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setOption } from "../../features/navitem/navitemSlice";
 import { Button } from '@mui/material';
 import { uploadFile } from '../../features/result/resultSlice';
 import FolderIcon from '@mui/icons-material/Folder';
+import { Accordians, Loader } from '../../components';
 
 const Upload = () => {
     const dispatch = useDispatch();
@@ -22,6 +23,8 @@ const Upload = () => {
         data.append('file', selectedFile, selectedFile.name)
         dispatch(uploadFile(data))
     }
+  const fileResult = useSelector((store) => store.result.fileResult)
+  const isFileLoading = useSelector((store) => store.result.isFileLoading)
   return (
     <>
      <h2 style={{fontFamily:'consolas'}}>Upload Your Prescription</h2>
@@ -33,6 +36,8 @@ const Upload = () => {
         </Button>
         <Button type="submit" variant = "contained" sx={{backgroundColor:'teal'}} onClick={handleSubmit}>Submit</Button>
         <p style={{fontFamily:'consolas',fontWeight:'bold'}}>Chosen File : {selectedFile?selectedFile.name:"None"}</p>
+
+        {isFileLoading && !fileResult?<Loader/>:<Accordians list = {fileResult}/>}
     </>
    
   )

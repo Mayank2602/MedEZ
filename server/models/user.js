@@ -15,8 +15,11 @@ const UserSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now(),
-  }
-
+  },
+  prescriptions: [{
+    type:Schema.Types.ObjectId,
+    ref: 'Item',
+  }]
 });
 
 const User = mongoose.model("User", UserSchema);

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { single, multiple } = require("../controllers/searchControllers");
+const { single, multiple, upload } = require("../controllers/searchControllers");
 const isLogin = require("../middleware/isLogin");
 const multer = require("multer");
 const { uuid } = require("uuidv4");
@@ -15,8 +15,9 @@ const fileStorageEngine = multer.diskStorage({
     cb(null, "_" + uuid() + str.substring(str.lastIndexOf('.')));
   },
 });
-const upload = multer({ storage: fileStorageEngine });
+const uploadMulter = multer({ storage: fileStorageEngine });
 
 router.route("/single").post(isLogin, single);
-router.route("/multiple").post(isLogin, upload.single("file"), multiple);
+router.route("/multiple").post(isLogin, multiple);
+router.route("/upload").post(isLogin, uploadMulter.single("file"), upload);
 module.exports = router;

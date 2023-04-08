@@ -5,7 +5,7 @@ const User = require("../models/user");
 const loadUser = async (req, res) => {
   try {
     const userId = req.user.userId;
-    const user = await User.findById(userId);
+    const user = await User.findById(userId).populate("prescriptions");
     return res.status(200).json({ user });
   } catch (e) {
     return res.status(400).send({ msg: "Server Error" });
