@@ -4,7 +4,7 @@ from ocr import ocr
 import os
 from medex import medex
 
-FILENAME="timetable.jpeg"
+FILENAME="sample.jpeg"
 TEXT=""
 
 def is_pdf(path_to_file):
