@@ -33,3 +33,8 @@ def search():
             response["sources"].append(json.loads(function(name)))
     return jsonify(response)
     
+@app.route('/prescription',methods=["POST"])
+def prescription():
+    filename=request.form.get('filename')
+    return f"You sent {filename}"
+
