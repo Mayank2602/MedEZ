@@ -18,19 +18,22 @@ def onemg(name):
         try:
             name=soup.find('span',class_="style__pro-title___3zxNC").text
         except:
-            name=""
+            return onemg("paracetamol")
     try:
         price=soup.find('div',class_="style__price-tag___KzOkY").text
     except:
         try:
             price=soup.find('div',class_="style__price-tag___B2csA").text
         except:
-            price=""
+            return onemg("paracetamol")
     try:
         href=soup.find('a', class_="style__product-link___1hWpa")["href"]
     except:
-        body=soup.find('div',class_="style__horizontal-card___1Zwmt style__height-158___1XIvD")
-        href=body.find('a')["href"]
+        try:
+            body=soup.find('div',class_="style__horizontal-card___1Zwmt style__height-158___1XIvD")
+            href=body.find('a')["href"]
+        except:
+            return onemg("paracetamol")
 
     url=f"https://www.1mg.com{href}"
     name=unicode_patch(name)
@@ -43,3 +46,4 @@ def onemg(name):
                 'source':'onemg'
             }
     return json.dumps(details)
+
