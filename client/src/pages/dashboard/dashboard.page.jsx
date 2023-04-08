@@ -19,7 +19,7 @@ const Dashboard = () => {
 
   return (
     <>
-    <div>Dashboard</div>
+    <h2 style={{fontFamily:'consolas'}}>Dashboard</h2>
     {!isLoading && user? <>
         <div>{user.username}</div>
         <div>{user.email}</div>

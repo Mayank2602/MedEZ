@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { setOption } from "../../features/navitem/navitemSlice";
 import { Button } from '@mui/material';
 import { uploadFile } from '../../features/result/resultSlice';
+import FolderIcon from '@mui/icons-material/Folder';
+
 const Upload = () => {
     const dispatch = useDispatch();
     useEffect(() => {
@@ -20,17 +22,17 @@ const Upload = () => {
         data.append('file', selectedFile, selectedFile.name)
         dispatch(uploadFile(data))
     }
-
   return (
     <>
-     <div>Upload</div>
+     <h2 style={{fontFamily:'consolas'}}>Upload Your Prescription</h2>
          
 
-        <Button variant="contained" component="label">
-           Choose File
+        <Button variant="outlined" component="label" sx={{marginRight:'15px',color:'teal'}}>
+           <FolderIcon sx={{marginRight:'5px'}}/> Choose File
           <input name="image" hidden type="file" onChange={handleSelectedFile} />
         </Button>
-        <Button type="submit" onClick={handleSubmit}>Submit</Button>
+        <Button type="submit" variant = "contained" sx={{backgroundColor:'teal'}} onClick={handleSubmit}>Submit</Button>
+        <p style={{fontFamily:'consolas',fontWeight:'bold'}}>Chosen File : {selectedFile?selectedFile.name:"None"}</p>
     </>
    
   )

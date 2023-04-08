@@ -58,7 +58,7 @@ export default function Login() {
     if (token && access_token) {
       setTimeout(() => {
         navigate("/dashboard");
-      }, 1000);
+      }, 500);
     }
     dispatch(setOption("Login"));
     // eslint-disable-next-line
@@ -82,7 +82,7 @@ export default function Login() {
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <div>
-          <button onClick={() => login()}>Sign in with Google 🚀 </button>
+          <button onClick={() => login()} className="login-with-google-btn">Sign in with Google </button>
         </div>
 
         {/* <Box
