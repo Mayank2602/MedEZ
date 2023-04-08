@@ -10,7 +10,7 @@ from unicode_patch import unicode_patch
 
 from bs4 import BeautifulSoup
 
-from unicode_patch import unicode_patch
+from .unicode_patch import unicode_patch
 
 
 def _1mg(name):
