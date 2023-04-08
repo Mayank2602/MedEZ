@@ -1,7 +1,9 @@
 import requests
 import json
 
-from .unicode_patch import unicode_patch
+import sys, os
+sys.path.append(os.path.join(os.path.dirname(__file__), 'util'))
+from unicode_patch import unicode_patch
 
 def medibuddy(name):
     URL="https://meds-service.medibuddy.in/app/medicine/search"

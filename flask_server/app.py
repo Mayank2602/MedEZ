@@ -1,11 +1,14 @@
 from flask import Flask, request, jsonify
 
 import json
-from scrape import apollo, medibuddy, pharmeasy
+from scrape.apollo import apollo
+from scrape.medibuddy import medibuddy
+from scrape.pharmeasy import pharmeasy
+from scrape.onemg import onemg
 
 app=Flask(__name__)
 
-FUNCTIONS=[apollo,medibuddy,pharmeasy]
+FUNCTIONS=[apollo,medibuddy,pharmeasy,onemg]
 
 @app.route('/')
 def hello_world():

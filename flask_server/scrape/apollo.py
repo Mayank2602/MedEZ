@@ -1,9 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
-
 import json
 
-from .unicode_patch import unicode_patch
+import sys, os
+sys.path.append(os.path.join(os.path.dirname(__file__), 'util'))
+from unicode_patch import unicode_patch
 
 def apollo(name):
     URL=f"https://www.apollopharmacy.in/search-medicines/{name}"
@@ -42,3 +43,4 @@ def apollo(name):
         }
     
     return json.dumps(details)
+

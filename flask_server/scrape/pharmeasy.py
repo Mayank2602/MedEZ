@@ -2,12 +2,13 @@ from bs4 import BeautifulSoup
 import json
 import requests
 
-from .unicode_patch import unicode_patch
+import sys, os
+sys.path.append(os.path.join(os.path.dirname(__file__), 'util'))
+from unicode_patch import unicode_patch
 
 def pharmeasy(name):
-    source= requests.get(f'https://pharmeasy.in/search/all?name={name}').text
+    source=requests.get(f'https://pharmeasy.in/search/all?name={name}').text
     soup=BeautifulSoup(source,'lxml')
-    
     name=soup.find('h1',class_='ProductCard_medicineName__8Ydfq').text
     try:
         div=soup.find('div',class_=('ProductCard_medicineUnitContainer__cBkHl'))
@@ -16,9 +17,9 @@ def pharmeasy(name):
     except:
         price=soup.find('div',class_=('ProductCard_ourPrice__yDytt')).text
         link=div.find('a',class_='ProductCard_medicineUnitWrapper__eoLpy ProductCard_defaultWrapper__nxV0R').get('href')
-        
+    
     name=unicode_patch(name)
-    price=unicode_patch(price)
+    price=unicode_patch(price).replace("*","")
     details={
                 "name":name.strip(),
                 "price":float(price.strip()),
