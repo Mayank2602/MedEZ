@@ -12,11 +12,34 @@ from medextractor.main import super_parse
 
 import os
 
+def LCS(X, Y):
+    m=len(X)
+    n=len(Y)
+    L=[[None]*(n + 1) for i in range(m + 1)]
 
+    for i in range(m + 1):
+        for j in range(n + 1):
+            if i == 0 or j == 0 :
+                L[i][j] = 0
+            elif X[i-1] == Y[j-1]:
+                L[i][j] = L[i-1][j-1]+1
+            else:
+                L[i][j] = max(L[i-1][j], L[i][j-1])
+    return L[m][n]
+
+def factor(X, Y):
+    mx=0
+    for i in range(len(Y)):
+        if i+2*len(X)-1<len(Y):
+            mx=max(mx,LCS(X,Y[i:i+2*len(X)-1]))
+        else:
+            break
+    return (mx/len(X))*100
 app=Flask(__name__)
 cors = CORS(app)
 
 FUNCTIONS=[apollo,medibuddy,pharmeasy,onemg]
+
 
 @app.route('/')
 def hello_world():
@@ -36,11 +59,14 @@ def search():
     for function in FUNCTIONS:
         if function==apollo:
             apollo_response=json.loads(function(name))
+            apollo_response["accuracy"]=factor(name.lower().replace(" ",""),apollo_response["name"].lower().replace(" ",""))
             response["desc"]=apollo_response["desc"]
             del apollo_response["desc"]
             response["sources"].append(apollo_response)
         else:
-            response["sources"].append(json.loads(function(name)))
+            temporary=json.loads(function(name))
+            temporary["accuracy"]=factor(name.lower().replace(" ",""),temporary["name"].lower().replace(" ",""))
+            response["sources"].append(temporary)
     return jsonify(response)
 
 @cross_origin()
