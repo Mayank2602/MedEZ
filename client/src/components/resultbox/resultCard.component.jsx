@@ -10,7 +10,8 @@ import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 const imageURL = {
    Apollo : './images/Apollo.jpg',
    MediBuddy: '/images/MediBuddy.png',
-   PharmEasy: '/images/PharmEasy.jpg'
+   PharmEasy: '/images/PharmEasy.jpg',
+   onemg: '/images/onemg.png',
 }
 export default function ResultCard({name,price,source,url}) {
  

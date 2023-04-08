@@ -41,6 +41,7 @@ const userSlice = createSlice({
         const {fileResult} = payload;
         state.fileResult = fileResult;
         state.isFileLoading = false;
+        toast.success(fileResult)
     },
     [uploadFile.rejected]: (state) => {
         state.isFileLoading = false;

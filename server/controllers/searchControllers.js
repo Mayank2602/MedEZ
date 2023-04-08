@@ -23,8 +23,18 @@ const single = async (req, res) => {
 const multiple = async (req, res) => {
   try {
     console.log(req.file);
+    const resp = await axios.post(
+        "http://localhost:5000/prescription",
+        { filename: req.file.filename },
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
     //user code
-    return res.status(200).json({});
+    console.log(resp.data);
+    return res.status(200).json({fileResult: resp.data});
   } catch (e) {
     return res.status(400).send({ msg: "Server Error" });
   }
