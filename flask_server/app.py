@@ -28,6 +28,8 @@ def LCS(X, Y):
     return L[m][n]
 
 def factor(X, Y):
+    if(len(Y)==0 or len(X)==0) :
+        return 0
     mx=0
     for i in range(len(Y)):
         if i+2*len(X)-1<len(Y):
