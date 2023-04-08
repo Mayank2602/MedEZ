@@ -46,5 +46,4 @@ def onemg(name):
                 'source':'onemg'
             }
     return json.dumps(details)
-print(onemg('paracetamol'))
 

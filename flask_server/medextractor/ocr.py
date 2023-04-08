@@ -2,7 +2,8 @@ import os, io
 from google.cloud import vision
 import pandas as pd
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r"token.json"
+
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = f"{os.path.join(os.path.dirname(__file__), 'token.json')}"
 
 client = vision.ImageAnnotatorClient()
 

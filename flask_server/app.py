@@ -7,6 +7,11 @@ from scrape.medibuddy import medibuddy
 from scrape.pharmeasy import pharmeasy
 from scrape.onemg import onemg
 
+from medextractor.main import super_parse
+
+import os
+
+
 app=Flask(__name__)
 cors = CORS(app)
 
@@ -37,8 +42,14 @@ def search():
     return jsonify(response)
 
 @cross_origin()
-@app.route('/prescription',methods=["POST"])
+@app.route('/prescription',methods=["GET","POST"])
 def prescription():
-    filename=request.form.get('filename')
-    return f"You sent {filename}"
+    if request.method=='GET':
+        filename=request.args.get('filename')
+        upath=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'server','uploads',filename))
+        response=json.loads(super_parse(upath))
+        return jsonify(response)
+    else:
+        filename=request.form.get('filename')
+        return f"You sent {filename}"
 
