@@ -49,7 +49,7 @@ def prescription():
         upath=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'server','uploads',filename))
         response=json.loads(super_parse(upath))
         return jsonify(response)
-    else if request.method=='POST':
+    elif request.method=='POST':
         filename=request.form.get('filename')
         upath=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'server','uploads',filename))
         response=json.loads(super_parse(upath))
