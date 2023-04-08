@@ -7,6 +7,7 @@ from scrape.medibuddy import medibuddy
 from scrape.pharmeasy import pharmeasy
 from scrape.onemg import onemg
 
+from flipkart.flipkart import build_array
 from medextractor.main import super_parse
 
 import os
@@ -31,6 +32,7 @@ def search():
     response={}
     response["name"]=name
     response["sources"]=[]
+    response["alternatives"]=[]
     for function in FUNCTIONS:
         if function==apollo:
             apollo_response=json.loads(function(name))
@@ -40,6 +42,16 @@ def search():
         else:
             response["sources"].append(json.loads(function(name)))
     return jsonify(response)
+
+@cross_origin()
+@app.route('/alternatives',methods=["GET","POST"])
+def alternative():
+    if request.method=='GET':
+        name=request.args.get('name')
+    else:
+        name=request.form.get('name')
+    built=json.loads(build_array(name))
+    return jsonify(built)
 
 @cross_origin()
 @app.route('/prescription',methods=["GET","POST"])
