@@ -37,7 +37,7 @@ def apollo(name):
             "price":float(price.strip()),
             "url":url.strip(),
             'desc':desc,
-            "source":"Apollo Pharmacy",
+            "source":"Apollo",
 
         }
     
