@@ -1,16 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { loadResultThunk } from "./resultThunk";
+import { loadResultThunk, uploadFileThunk } from "./resultThunk";
 import { toast } from "react-toastify";
 
 
 const initialState = {
   isLoading: false,
   result: null,
+  fileResult : null,
+  isFileLoading: false,
 };
 
 
 export const loadResult = createAsyncThunk("result/loadResult", loadResultThunk);
-
+export const uploadFile = createAsyncThunk("result/uploadFile", uploadFileThunk)
 const userSlice = createSlice({
   name: "result",
   initialState,
@@ -31,6 +33,18 @@ const userSlice = createSlice({
         state.isLoading = false;
         toast.error(payload);
     },
+    [uploadFile.pending]: (state) => {
+        state.resultFile = null;
+        state.isFileLoading = true;
+    },
+    [uploadFile.fulfilled]:(state, {payload}) => {
+        const {fileResult} = payload;
+        state.fileResult = fileResult;
+        state.isFileLoading = false;
+    },
+    [uploadFile.rejected]: (state) => {
+        state.isFileLoading = false;
+    }
    
   },
 });

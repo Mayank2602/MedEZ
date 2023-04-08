@@ -23,7 +23,9 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.8.0",
-    "nodemon": "^2.0.20"
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^2.0.20",
+    "uuidv4": "^6.2.13"
   },
   "engines": {
     "node": "16.14.2",
