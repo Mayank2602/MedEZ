@@ -4,5 +4,6 @@ import Login from "./login/login.page";
 import Register from "./register/register.page";
 import SharedLayout from "./sharedLayout/sharedLayout.page";
 import LandingPage from "./landingPage/LandingPage.page";
-
-export {Home, Dashboard, Login, Register, SharedLayout, LandingPage};
+import Search from "./search/search.page";
+import Upload from "./upload/upload.page";
+export {Home, Dashboard,Search,Upload, Login, Register, SharedLayout, LandingPage};

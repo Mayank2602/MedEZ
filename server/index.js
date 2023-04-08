@@ -13,6 +13,7 @@ const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/MedEZ";
 
 const authRoutes = require("./routes/auth");
 const itemRoutes = require("./routes/item");
+const searchRoutes = require("./routes/search");
 
 if (
   process.env.NODE_ENV === "production" ||
@@ -44,6 +45,7 @@ app.use(
 
 app.use("/api/auth", authRoutes);
 app.use("/api/item", itemRoutes);
+app.use("/api/search", searchRoutes);
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);

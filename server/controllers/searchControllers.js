@@ -1,22 +1,21 @@
 const User = require("../models/user");
-const Item =require("../models/item");
 const axios = require('axios');
-const start = async(req,res) => {
+const single = async(req,res) => {
 
 
     try{
-        const data = await axios.get("http://localhost:5000/search?name=crocin", {headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json',
+        const { medicine } = req.body;
+        const resp = await axios.post("http://localhost:5000/search",{name : medicine}, {headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
           }},);
-          console.log(data.data);
-        return res.status(200).json({data: data.data});
+          console.log(resp.data);
+        return res.status(200).json({result: resp.data});
     }catch(e){
         return res.status(400).send({ msg: "Server Error" });
     }
 }
 
-const submit = async(req,res) => {
+const multiple = async(req,res) => {
     try{
         const userId = req.user.userId;
         const user = await User.findById(userId);
@@ -28,4 +27,4 @@ const submit = async(req,res) => {
     }
 }
 
-module.exports = {start, submit};
+module.exports = {single, multiple};
