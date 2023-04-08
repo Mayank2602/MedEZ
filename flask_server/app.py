@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
 
 import json
 from scrape.apollo import apollo
@@ -7,6 +8,7 @@ from scrape.pharmeasy import pharmeasy
 from scrape.onemg import onemg
 
 app=Flask(__name__)
+cors = CORS(app)
 
 FUNCTIONS=[apollo,medibuddy,pharmeasy,onemg]
 
@@ -14,6 +16,7 @@ FUNCTIONS=[apollo,medibuddy,pharmeasy,onemg]
 def hello_world():
     return 'Welcome to MedEZ API'
 
+@cross_origin()
 @app.route('/search',methods=["GET","POST"])
 def search():
     if request.method=='GET':
@@ -32,7 +35,8 @@ def search():
         else:
             response["sources"].append(json.loads(function(name)))
     return jsonify(response)
-    
+
+@cross_origin()
 @app.route('/prescription',methods=["POST"])
 def prescription():
     filename=request.form.get('filename')
