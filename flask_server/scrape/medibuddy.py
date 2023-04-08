@@ -21,7 +21,7 @@ def medibuddy(name):
     
     details={
         "name":name.strip(),
-        "price":price.strip(),
+        "price":float(price.strip()),
         "url":link.strip(),
         "source":"MediBuddy"
     }

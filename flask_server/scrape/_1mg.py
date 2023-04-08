@@ -44,7 +44,7 @@ def _1mg(name):
         price=unicode_patch(price)
         details={
                     "name":name.strip(),
-                    "price":price.strip()
+                    "price":float(price.strip())
                 }
     
     return json.dumps(details)

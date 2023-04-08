@@ -30,10 +30,11 @@ def apollo(name):
     soup=BeautifulSoup(source,'lxml')
     desc=soup.find('div',class_='ProductDetailsGeneric_txtListing__d7bk_').text
     
+    desc=unicode_patch(desc)
 
     details={
             "name":name.strip(),
-            "price":price.strip(),
+            "price":float(price.strip()),
             "url":url.strip(),
             'desc':desc,
             "source":"Apollo Pharmacy",

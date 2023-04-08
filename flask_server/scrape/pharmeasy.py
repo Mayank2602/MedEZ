@@ -21,7 +21,7 @@ def pharmeasy(name):
     price=unicode_patch(price)
     details={
                 "name":name.strip(),
-                "price":price.strip(),
+                "price":float(price.strip()),
                 "url":f'https://pharmeasy.in{link}'.strip(),
                 'source':'PharmEasy'
             }
