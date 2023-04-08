@@ -18,14 +18,14 @@ def onemg(name):
         try:
             name=soup.find('span',class_="style__pro-title___3zxNC").text
         except:
-            return onemg("paracetamol")
+            return onemg("dolo")
     try:
         price=soup.find('div',class_="style__price-tag___KzOkY").text
     except:
         try:
             price=soup.find('div',class_="style__price-tag___B2csA").text
         except:
-            return onemg("paracetamol")
+            return onemg("crocin")
     try:
         href=soup.find('a', class_="style__product-link___1hWpa")["href"]
     except:
@@ -46,4 +46,5 @@ def onemg(name):
                 'source':'onemg'
             }
     return json.dumps(details)
+print(onemg('paracetamol'))
 
