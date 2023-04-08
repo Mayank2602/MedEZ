@@ -2,7 +2,7 @@
 A HackFest'23 project made with ❤️ by
 - [@imraunn](https://github.com/imraunn)
 - [@milan0027](https://github.com/milan0027)
-- [@Mayank2602](https://github.com/Mayank2602)
+- [@mayank2602](https://github.com/Mayank2602)
 - [@malav22](https://github.com/malav22)
 
 ### Problem Statement
