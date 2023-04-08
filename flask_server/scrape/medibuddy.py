@@ -16,14 +16,15 @@ def medibuddy(name):
         price=str(message[0]["discountPrice"])
         link=f'https://www.medibuddy.in/about/{code}'
         name=unicode_patch(name)
-        price=unicode_patch(price)
+        price=unicode_patch(price).strip()
     else:
         name=""
-        price=""
+        price=0
+        link="https://www.medibuddy.in"
     
     details={
         "name":name.strip(),
-        "price":float(price.strip()),
+        "price":float(price),
         "url":link.strip(),
         "source":"MediBuddy"
     }

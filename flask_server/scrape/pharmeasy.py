@@ -19,7 +19,7 @@ def pharmeasy(name):
         link=div.find('a',class_='ProductCard_medicineUnitWrapper__eoLpy ProductCard_defaultWrapper__nxV0R').get('href')
     
     name=unicode_patch(name)
-    price=unicode_patch(price).replace("*","")
+    price=unicode_patch(price).replace("*","").replace("MRP","")
     details={
                 "name":name.strip(),
                 "price":float(price.strip()),
