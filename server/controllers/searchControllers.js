@@ -5,7 +5,7 @@ const axios = require("axios");
 const single = async (req, res) => {
   try {
     const { medicine } = req.body;
-    const resp = await axios.post(
+    const { data } = await axios.post(
       "http://localhost:5000/search",
       { name: medicine },
       {
@@ -14,8 +14,24 @@ const single = async (req, res) => {
         },
       }
     );
-    console.log(resp.data);
-    return res.status(200).json({ result: resp.data });
+    const accuracy =
+      data.sources.reduce((total, item) => {
+        return total + item.accuracy;
+      }, 0) / data.sources.length;
+    const maxAccuracy = data.sources.reduce((maxi, item) => {
+      return Math.max(maxi, item.accuracy);
+    }, 0);
+    const sources = data.sources.filter((item) => item.accuracy >= 20);
+    data.sources = sources;
+    if (maxAccuracy < 70) {
+      data.accuracy = accuracy.toFixed(2);
+    }else{
+        data.accuracy = maxAccuracy.toFixed(2);
+    }
+
+    
+    console.log(data);
+    return res.status(200).json({ result: data });
   } catch (e) {
     return res.status(400).send({ msg: "Server Error" });
   }
@@ -44,7 +60,7 @@ const multiple = async (req, res) => {
 const upload = async (req, res) => {
   try {
     //console.log(req.file);
-    
+
     const resp = await axios.post(
       "http://localhost:5000/prescription",
       { filename: req.file.filename },

@@ -6,4 +6,5 @@ import SharedLayout from "./sharedLayout/sharedLayout.page";
 import LandingPage from "./landingPage/LandingPage.page";
 import Search from "./search/search.page";
 import Upload from "./upload/upload.page";
-export {Home, Dashboard,Search,Upload, Login, Register, SharedLayout, LandingPage};
+import Compare from "./compare/compare.page";
+export {Home, Dashboard,Search,Upload, Login, Register, SharedLayout, LandingPage, Compare};

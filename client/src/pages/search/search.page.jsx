@@ -53,7 +53,7 @@ const Search = () => {
       <>
      
       {
-        isLoading && !result ? <Loader/>:<ResultBox/>
+        isLoading && !result ? <Loader/>:<ResultBox result={result}/>
       }
       </>
      

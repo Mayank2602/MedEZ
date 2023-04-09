@@ -1,5 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { loadResultThunk, uploadFileThunk } from "./resultThunk";
+import {
+  altResultThunk,
+  loadResultThunk,
+  multiResultThunk,
+  uploadFileThunk,
+} from "./resultThunk";
 import { toast } from "react-toastify";
 
 const initialState = {
@@ -7,6 +12,10 @@ const initialState = {
   result: null,
   fileResult: null,
   isFileLoading: false,
+  alternatives: null,
+  isAltLoading: false,
+  multiResult: null,
+  isMultiLoading: false,
 };
 
 export const loadResult = createAsyncThunk(
@@ -16,6 +25,11 @@ export const loadResult = createAsyncThunk(
 export const uploadFile = createAsyncThunk(
   "result/uploadFile",
   uploadFileThunk
+);
+export const altResult = createAsyncThunk("result/altResult", altResultThunk);
+export const multiResult = createAsyncThunk(
+  "result/multiResult",
+  multiResultThunk
 );
 const userSlice = createSlice({
   name: "result",
@@ -30,6 +44,7 @@ const userSlice = createSlice({
       const { result } = payload;
       state.isLoading = false;
       state.result = result;
+      console.log(result);
     },
     [loadResult.rejected]: (state, { payload }) => {
       state.isLoading = false;
@@ -47,6 +62,34 @@ const userSlice = createSlice({
     },
     [uploadFile.rejected]: (state) => {
       state.isFileLoading = false;
+    },
+    [altResult.pending]: (state) => {
+      state.altResult = null;
+      state.isAltLoading = true;
+    },
+    [altResult.fulfilled]: (state, { payload }) => {
+      const { result } = payload;
+      state.isAltLoading = false;
+      state.altResult = result;
+      console.log(result);
+    },
+    [altResult.rejected]: (state, { payload }) => {
+      state.isAltLoading = false;
+      toast.error(payload);
+    },
+    [multiResult.pending]: (state) => {
+      state.result = null;
+      state.isLoading = true;
+    },
+    [multiResult.fulfilled]: (state, { payload }) => {
+      const { result } = payload;
+      state.isLoading = false;
+      state.result = result;
+      console.log(result);
+    },
+    [multiResult.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      toast.error(payload);
     },
   },
 });

@@ -5,6 +5,7 @@ import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
+import { Button } from '@mui/material';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -53,13 +54,17 @@ export default function Accordians({list}) {
     <div>
        {list && list.map((item,index) => <Accordion key={item._id} expanded={expanded == `${index+1}`} onChange={handleChange(`${index+1}`)}>
         <AccordionSummary aria-controls={`panel${index+1}d-content`} id={`panel${index+1}d-header`}>
-          <Typography>{item.filename}</Typography>
+        <div>{item.filename}</div><div>
+         <Button variant="outlined">Compare</Button> </div>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Medicines Detected
+         
+            <b>Medicines Detected</b>
             { item.drugs.map((drug,j) => <li key={j}>{drug}</li>)}
-          </Typography>
+           {item.type == "scan" &&<> <b>NOTE: </b> Medicines Detected above may have low accuracy cause of scan. 
+           Users must crosscheck their symptoms with the medicine description.
+           </>}
+          
         </AccordionDetails>
       </Accordion>)}
     </div>

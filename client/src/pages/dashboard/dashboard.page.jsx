@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setOption } from '../../features/navitem/navitemSlice';
 import { loadUser } from '../../features/user/userSlice';
+import { Accordians } from '../../components';
 
 const Dashboard = () => {
 
@@ -23,6 +24,7 @@ const Dashboard = () => {
     {!isLoading && user? <>
         <div>{user.username}</div>
         <div>{user.email}</div>
+        {user.prescriptions && <Accordians list={user.prescriptions}/>}
     </>:<><div>Loading...</div></>}
    
     </>
