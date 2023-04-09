@@ -82,6 +82,27 @@ const multiple = async (req, res) => {
   }
 };
 
+const alter = async (req, res) => {
+    try {
+      const { name } = req.body;
+      const { data } = await axios.post(
+        "http://localhost:5000/alternatives",
+        { name },
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+      //console.log(data)
+  
+      //console.log(data);
+      return res.status(200).json({ result: data });
+    } catch (e) {
+      return res.status(400).send({ msg: "Server Error" });
+    }
+  };
+
 const upload = async (req, res) => {
   try {
     //console.log(req.file);
@@ -116,4 +137,4 @@ const upload = async (req, res) => {
   }
 };
 
-module.exports = { single, multiple, upload };
+module.exports = { single, multiple, upload, alter};

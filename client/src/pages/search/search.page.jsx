@@ -5,7 +5,7 @@ import { Grid } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
-import { loadResult } from "../../features/result/resultSlice";
+import { loadResult, altResult } from "../../features/result/resultSlice";
 import { Loader, ResultBox } from "../../components";
 
 const Search = () => {
@@ -24,6 +24,7 @@ const Search = () => {
   };
   const handleClick = (e) => {
     dispatch(loadResult({ medicine: textInput }));
+    dispatch(altResult({name: textInput}));
   };
   return (
     <>

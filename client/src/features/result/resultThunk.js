@@ -4,7 +4,7 @@ import axios from "axios";
 export const loadResultThunk = async (medicineName, thunkAPI) => {
   try {
     //const user = thunkAPI.getState().user.user
-    console.log(medicineName)
+    //console.log(medicineName)
     const resp = await customFetch.post("/api/search/single", medicineName, authHeader(thunkAPI));
     return resp.data;
   } catch (error) {
@@ -32,7 +32,7 @@ export const altResultThunk = async (medicineName, thunkAPI) => {
   try {
     //const user = thunkAPI.getState().user.user
     console.log(medicineName)
-    const resp = await customFetch.post("/api/search/single", medicineName, authHeader(thunkAPI));
+    const resp = await customFetch.post("/api/search/alter", medicineName, authHeader(thunkAPI));
     return resp.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response.data.msg);
@@ -43,7 +43,7 @@ export const altResultThunk = async (medicineName, thunkAPI) => {
 export const multiResultThunk = async (medicineName, thunkAPI) => {
   try {
     //const user = thunkAPI.getState().user.user
-    console.log(medicineName)
+    //console.log(medicineName)
     const resp = await customFetch.post("/api/search/multiple", medicineName, authHeader(thunkAPI));
     return resp.data;
   } catch (error) {

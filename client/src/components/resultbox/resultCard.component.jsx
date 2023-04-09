@@ -12,6 +12,7 @@ const imageURL = {
    MediBuddy: '/images/MediBuddy.png',
    PharmEasy: '/images/PharmEasy.jpg',
    onemg: '/images/onemg.png',
+   flipkart: '/images/flipkart.jpg'
 }
 export default function ResultCard({name,price,source,url}) {
  

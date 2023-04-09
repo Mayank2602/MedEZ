@@ -64,14 +64,13 @@ const userSlice = createSlice({
       state.isFileLoading = false;
     },
     [altResult.pending]: (state) => {
-      state.altResult = null;
+      state.alternatives = null;
       state.isAltLoading = true;
     },
     [altResult.fulfilled]: (state, { payload }) => {
       const { result } = payload;
       state.isAltLoading = false;
-      state.altResult = result;
-      console.log(result);
+      state.alternatives = result;
     },
     [altResult.rejected]: (state, { payload }) => {
       state.isAltLoading = false;

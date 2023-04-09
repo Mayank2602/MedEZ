@@ -19,7 +19,7 @@ const ResultBox = ({result}) => {
     <div>
     <h2 style={{fontFamily:'consolas'}}>Alternatives</h2>
     {isAltLoading || !alternatives ? <Loader/>:<>
-       
+       {alternatives.map((alt,index) => <ResultCard {...alt} key={index} />)}
     </>}
     </div>
     </div>
