@@ -78,17 +78,17 @@ const userSlice = createSlice({
       toast.error(payload);
     },
     [multiResult.pending]: (state) => {
-      state.result = null;
-      state.isLoading = true;
+      state.multiResult = null;
+      state.isMultiLoading = true;
     },
     [multiResult.fulfilled]: (state, { payload }) => {
       const { result } = payload;
-      state.isLoading = false;
-      state.result = result;
+      state.isMultiLoading = false;
+      state.multiResult = result;
       console.log(result);
     },
     [multiResult.rejected]: (state, { payload }) => {
-      state.isLoading = false;
+      state.isMultiLoading = false;
       toast.error(payload);
     },
   },

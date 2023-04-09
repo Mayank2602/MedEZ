@@ -6,6 +6,9 @@ import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { multiResult } from '../../features/result/resultSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -45,17 +48,25 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 export default function Accordians({list}) {
   const [expanded, setExpanded] = React.useState('1');
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
-
+  const handleClick = (id) => {
+         const obj = {
+            itemId: id,
+         }
+         dispatch(multiResult(obj))
+         navigate('/compare')
+        
+  }
   return (
     <div>
        {list && list.map((item,index) => <Accordion key={item._id} expanded={expanded == `${index+1}`} onChange={handleChange(`${index+1}`)}>
         <AccordionSummary aria-controls={`panel${index+1}d-content`} id={`panel${index+1}d-header`}>
         <div>{item.filename}</div><div>
-         <Button variant="outlined">Compare</Button> </div>
+         <Button sx={{marginLeft:'200px'}} variant="outlined" onClick={() => handleClick(item._id)}>Compare</Button> </div>
         </AccordionSummary>
         <AccordionDetails>
          
