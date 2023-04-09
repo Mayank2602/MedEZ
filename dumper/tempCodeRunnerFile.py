@@ -1,16 +1,11 @@
 from concurrent.futures import ThreadPoolExecutor as PoolExecutor
 import requests
+from tqdm import tqdm
 import json
 
-MAX_THREADS = 256
+MAX_THREADS = 100
 
 database=[]
-
-def save():
-    f=open("database0-10k.bin","w")
-    for medicine in database:
-        f.write(str(medicine)+"\n")
-    f.close()
 
 def download_url(counter):
     r=requests.get(f"https://search.sastasundar.com/product_find?product_id={counter}")
@@ -20,11 +15,10 @@ def download_url(counter):
     print(f"Done {counter}")
 
 futures=[]
-try:
-    for i in range(0,10000):
-        with PoolExecutor(max_workers=MAX_THREADS) as executor:
-            futures.append(executor.submit(download_url, str(i)))
-except KeyboardInterrupt:
-    save()
+for i in range(1,100):
+    with PoolExecutor(max_workers=MAX_THREADS) as executor:
+        futures.append(executor.submit(download_url, str(i)))
 
-save()
+f=open("database.bin","w")
+f.write(str(database))
+f.close()
