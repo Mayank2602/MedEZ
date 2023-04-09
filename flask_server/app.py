@@ -28,14 +28,9 @@ def LCS(X, Y):
     return L[m][n]
 
 def factor(X, Y):
-    if(len(Y)==0 or len(X)==0) :
-        return 0
     mx=0
     for i in range(len(Y)):
-        if i+2*len(X)-1<len(Y):
-            mx=max(mx,LCS(X,Y[i:i+2*len(X)-1]))
-        else:
-            break
+        mx=max(mx,LCS(X,Y[i:min(i+2*len(X)-1,len(Y)-1)]))
     return (mx/len(X))*100
 app=Flask(__name__)
 cors = CORS(app)
