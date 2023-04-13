@@ -74,7 +74,7 @@ const userSlice = createSlice({
     },
     [altResult.rejected]: (state, { payload }) => {
       state.isAltLoading = false;
-      toast.error(payload);
+      //toast.error(payload);
     },
     [multiResult.pending]: (state) => {
       state.multiResult = null;
