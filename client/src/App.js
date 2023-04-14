@@ -3,7 +3,7 @@ import { Container, CssBaseline } from "@mui/material";
 import { ToastContainer } from "react-toastify";
 import Box from "@mui/material/Box";
 import { ProtectedRoutes, Navbar, Footer } from "./components";
-import { Login, Register, Dashboard, SharedLayout, LandingPage, Home, Search, Upload, Compare } from "./pages";
+import { Login, Register, Dashboard, SharedLayout, LandingPage, Home, Search, Upload, Compare, Calendar } from "./pages";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -32,6 +32,7 @@ function App() {
               <Route path="/search" element={<Search/>} />
               <Route path="/upload" element={<Upload/>} />
               <Route path="/compare" element={<Compare/>} />
+              <Route path="/calendar" element={<Calendar/>}/>
             </Route>
 
             {/* ERROR PAGE */}

@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
+  addToCalendarThunk,
   altResultThunk,
   loadResultThunk,
   multiResultThunk,
@@ -31,6 +32,7 @@ export const multiResult = createAsyncThunk(
   "result/multiResult",
   multiResultThunk
 );
+export const addToCalendar = createAsyncThunk("result/addToCalendar", addToCalendarThunk);
 const userSlice = createSlice({
   name: "result",
   initialState,
@@ -88,6 +90,15 @@ const userSlice = createSlice({
     },
     [multiResult.rejected]: (state, { payload }) => {
       state.isMultiLoading = false;
+      toast.error(payload);
+    },
+    [addToCalendar.pending]: (state) => {
+      
+    },
+    [addToCalendar.fulfilled]: (state, { payload }) => {
+      toast.success("successful");
+    },
+    [addToCalendar.rejected]: (state, { payload }) => {
       toast.error(payload);
     },
   },

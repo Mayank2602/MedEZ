@@ -24,6 +24,7 @@ const navItemsAuth = [
   { item: "Home", route: "/home" },
   { item: "Search", route: "/search" },
   { item: "Upload", route: "/upload" },
+ { item: "Calendar", route: "/calendar"},
   { item: "Dashboard", route: "/dashboard" },
 ];
 const navItemsNoAuth = [

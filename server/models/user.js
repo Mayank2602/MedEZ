@@ -12,6 +12,9 @@ const UserSchema = new Schema({
     required: true,
     unique: true,
   },
+  tokens: {
+    type: Schema.Types.Mixed
+  },
   createdAt: {
     type: Date,
     default: Date.now(),

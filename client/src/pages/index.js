@@ -7,4 +7,5 @@ import LandingPage from "./landingPage/LandingPage.page";
 import Search from "./search/search.page";
 import Upload from "./upload/upload.page";
 import Compare from "./compare/compare.page";
-export {Home, Dashboard,Search,Upload, Login, Register, SharedLayout, LandingPage, Compare};
+import Calendar from "./calendar/calendar.page";
+export {Home, Dashboard,Search,Upload, Login, Register, SharedLayout, LandingPage, Compare, Calendar};
