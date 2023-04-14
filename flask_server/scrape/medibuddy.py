@@ -15,14 +15,17 @@ def medibuddy(name):
     r=requests.post(URL, json={"key":name})
     response=json.loads(r.text)
     message=response["message"]
-    if message!=[]: 
-        name=message[0]["name"]
-        code=message[0]["drugCode"]
-        price=str(message[0]["discountPrice"])
-        link=f'https://www.medibuddy.in/about/{code}'
-        name=unicode_patch(name)
-        price=unicode_patch(price).strip()
-    else:
+    try:
+        if message!=[]: 
+            name=message[0]["name"]
+            code=message[0]["drugCode"]
+            price=str(message[0]["discountPrice"])
+            link=f'https://www.medibuddy.in/about/{code}'
+            name=unicode_patch(name)
+            price=unicode_patch(price).strip()
+        else:
+            return default
+    except:
         return default
     
     details={

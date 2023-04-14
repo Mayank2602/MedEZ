@@ -38,7 +38,7 @@ def apollo(name):
     name=unicode_patch(name)
     price=unicode_patch(price)
     url=unicode_patch(url)
-
+    
     source=requests.get(url).text
     soup=BeautifulSoup(source,'lxml')
     desc=""
