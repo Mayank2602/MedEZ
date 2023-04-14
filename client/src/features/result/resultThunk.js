@@ -5,7 +5,7 @@ export const loadResultThunk = async (medicineName, thunkAPI) => {
   try {
     //const user = thunkAPI.getState().user.user
     //console.log(medicineName)
-    const resp = await customFetch.post("http://localhost:8080/api/search/single", medicineName, authHeader(thunkAPI));
+    const resp = await customFetch.post(`${process.env.REACT_APP_HOSTNAME}/api/search/single`, medicineName, authHeader(thunkAPI));
     return resp.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response.data.msg);
@@ -14,7 +14,7 @@ export const loadResultThunk = async (medicineName, thunkAPI) => {
 
 export const uploadFileThunk = async(file, thunkAPI) => {
     try{
-        const resp = await axios.post("http://localhost:8080/api/search/upload",file,
+        const resp = await axios.post(`${process.env.REACT_APP_HOSTNAME}/api/search/upload`,file,
         {
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -32,7 +32,7 @@ export const altResultThunk = async (medicineName, thunkAPI) => {
   try {
     //const user = thunkAPI.getState().user.user
     console.log(medicineName)
-    const resp = await customFetch.post("http://localhost:8080/api/search/alter", medicineName, authHeader(thunkAPI));
+    const resp = await customFetch.post(`${process.env.REACT_APP_HOSTNAME}/api/search/alter`, medicineName, authHeader(thunkAPI));
     return resp.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response.data.msg);
@@ -44,7 +44,7 @@ export const multiResultThunk = async (medicineName, thunkAPI) => {
   try {
     //const user = thunkAPI.getState().user.user
     //console.log(medicineName)
-    const resp = await customFetch.post("http://localhost:8080/api/search/multiple", medicineName, authHeader(thunkAPI));
+    const resp = await customFetch.post(`${process.env.REACT_APP_HOSTNAME}/api/search/multiple`, medicineName, authHeader(thunkAPI));
     return resp.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response.data.msg);
@@ -55,7 +55,7 @@ export const addToCalendarThunk = async (_, thunkAPI) => {
   try {
     //const user = thunkAPI.getState().user.user
     //console.log(medicineName)
-    const resp = await customFetch.get("http://localhost:8080/api/item/submit", authHeader(thunkAPI));
+    const resp = await customFetch.get(`${process.env.REACT_APP_HOSTNAME}/api/item/submit`, authHeader(thunkAPI));
     console.log(resp.data);
     return resp.data;
   } catch (error) {
