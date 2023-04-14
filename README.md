@@ -16,8 +16,16 @@ In today's world, people face the issue of having to compare prices of medicines
 - For the frontend, we will develop a **React-based user interface** that will showcase medication details, including names, dosages, durations, and prices from various websites. Additionally, the frontend will feature a calendar where patients can schedule medication reminders and track their dosages. The calendar will be integrated with **Google Calendar**, allowing patients to receive reminders across devices and platforms.
 
 - Our solution aims to simplify the medication purchasing process for patients, provide them with valuable cost-saving opportunities, and ensure that they can easily track and manage their medication schedules.
-
+### Tech Stack:
+- Flask
+- React
+- Node
+- MongoDB
+- Python
+- Google Cloud Vision API
+- Med7 NLP Model
 ### Installation steps:
+To install the application, follow these steps:
 ``` 
 git clone https://github.com/milan0027/MedEZ/
 ```
