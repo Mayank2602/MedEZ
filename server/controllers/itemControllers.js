@@ -23,7 +23,7 @@ const submit = async (req, res) => {
     const oauth2client = new google.auth.OAuth2(
       process.env.CLIENT_ID,
       process.env.CLIENT_SECRET,
-      "http://localhost:3000"
+      process.env.REDIRECT_URI || "http://localhost:3000"
     );
     const userId = req.user.userId;
     const user = await User.findById(userId);
