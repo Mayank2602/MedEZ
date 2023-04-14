@@ -97,7 +97,7 @@ const login = async (req, res) => {
       token,
     });
   } catch (error) {
-    //console.log(error)
+    console.log(error.response.data)
     return res.status(400).send({ msg: "Server Error" });
   }
 };
