@@ -29,9 +29,13 @@ def apollo(name):
 
     source=requests.get(url).text
     soup=BeautifulSoup(source,'lxml')
-    desc=soup.find('div',class_='ProductDetailsGeneric_txtListing__d7bk_').text
+    desc=""
+    try:
+        desc=soup.find('div',class_='ProductDetailsGeneric_txtListing__d7bk_').text
+        desc=unicode_patch(desc)
+    except:
+        print('description unavailable')
     
-    desc=unicode_patch(desc)
 
     details={
             "name":name.strip(),
@@ -41,6 +45,7 @@ def apollo(name):
             "source":"Apollo",
 
         }
-    
+
     return json.dumps(details)
+print(apollo('crocin'))
 
