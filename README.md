@@ -32,6 +32,23 @@ git clone https://github.com/milan0027/MedEZ/
 ```
 cd MedEZ
 ```
+**Sample format for server/.env:**
+```bash
+DB_URL = mongodb+srv://user:password@cluster0.xxxxxxxx.mongodb.net/
+JWT_SECRET = ThisIsMyJWT_SECRET
+JWT_LIFETIME = 10d
+CLIENT_ID = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com
+CLIENT_SECRET = xxxxxxxxxxxxxxxxxxxxxxxxxx
+# Uncomment if running on remote
+# REDIRECT_URI = https://medez.co.in
+```
+**Sample format for client/.env:**
+```bash
+REACT_APP_CLIENT_ID =  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com
+REACT_APP_CLIENT_SECRET = xxxxxxxxxxxxxxxxxxxxxxxxxx
+# Uncomment if running on local machine
+# REACT_APP_HOSTNAME = http://localhost:8080
+```
 - ### Development Mode
   #### Flask Endpoint:
   ```
