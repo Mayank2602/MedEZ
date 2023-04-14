@@ -40,7 +40,7 @@ JWT_LIFETIME = 10d
 CLIENT_ID = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com
 CLIENT_SECRET = xxxxxxxxxxxxxxxxxxxxxxxxxx
 # Uncomment if running on remote
-# REDIRECT_URI = https://medez.co.in
+# REDIRECT_URI = http://example.com
 ```
 **Sample format for client/.env:**
 ```bash
@@ -97,7 +97,7 @@ REACT_APP_CLIENT_SECRET = xxxxxxxxxxxxxxxxxxxxxxxxxx
   ```
   server {
     listen 80;
-    server_name medez.co.in;
+    server_name example.com;
 
     root /var/www/html;
     index index.html index.htm;
@@ -108,7 +108,7 @@ REACT_APP_CLIENT_SECRET = xxxxxxxxxxxxxxxxxxxxxxxxxx
   }
   server {
       listen 80;
-      server_name flaskapi.medez.co.in;
+      server_name flaskapi.example.com;
       location / {
                   include proxy_params;
                   proxy_pass http://localhost:5000;
@@ -116,7 +116,7 @@ REACT_APP_CLIENT_SECRET = xxxxxxxxxxxxxxxxxxxxxxxxxx
   }
   server {
       listen 80;
-      server_name api.medez.co.in;
+      server_name api.example.com;
       location / {
           proxy_set_header Host $host;
           proxy_pass http://localhost:8080;
@@ -188,3 +188,6 @@ REACT_APP_CLIENT_SECRET = xxxxxxxxxxxxxxxxxxxxxxxxxx
   ```
   sudo systemctl enable flaskapi
   ```
+  - The React Frontend will be hosted at _example.com_
+  - The Flask Backend will be hosted at _flaskapi.example.com_
+  - The NodeJS Backend will be hosted at _api.example.com_
