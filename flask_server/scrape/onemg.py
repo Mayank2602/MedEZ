@@ -9,7 +9,7 @@ default={
     "name":"",
     "price":"",
     "url":"",
-    'source':""
+    "source":""
 }
 def onemg(name):
     scraper = cfscrape.create_scraper()
@@ -51,4 +51,3 @@ def onemg(name):
                 'source':'onemg'
             }
     return json.dumps(details)
-onemg('julia')
