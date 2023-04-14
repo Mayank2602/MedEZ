@@ -1,5 +1,5 @@
 # MedEZ
-A project made with ❤️ by
+A project made with â¤ï¸ by
 - [@imraunn](https://github.com/imraunn)
 - [@milan0027](https://github.com/milan0027)
 - [@Mayank2602](https://github.com/Mayank2602)
@@ -18,20 +18,148 @@ In today's world, people face the issue of having to compare prices of medicines
 - Our solution aims to simplify the medication purchasing process for patients, provide them with valuable cost-saving opportunities, and ensure that they can easily track and manage their medication schedules.
 
 ### Installation steps:
-```bash 
+``` 
 git clone https://github.com/milan0027/MedEZ/
 ```
-```bash
+```
 cd MedEZ
 ```
+- ### Development Mode
+  #### Flask Endpoint:
+  ```
+  cd flask_server
+  ```
+  ```
+  pip install -r requirements.txt
+  ```
+  ```
+  flask run
+  ```
 
-#### Flask Endpoint:
->```bash
-> cd flask_server
->```
->```bash
-> pip install -r requirements.txt
->```
->```bash
-> flask run
->```
+  #### React Endpoint:
+  ```
+  cd client
+  ```
+  ```
+  npm install
+  ```
+  ```
+  npm start
+  ```
+
+  #### NodeJS Endpoint:
+  ```
+  cd server
+  ```
+  ```
+  npm install
+  ```
+  ```
+  npm start
+  ```
+  - The React Frontend will be hosted at port 3000 
+  - The Flask Backend will be hosted at port 5000
+  - The NodeJS Backend will be hosted at port 8080
+- ### Production Mode
+  #### Nginx Configuration:
+  ```
+  sudo apt install nginx
+  ```
+  ```
+  nano /etc/nginx/sites-available/default
+  ```
+
+  ```
+  server {
+    listen 80;
+    server_name medez.co.in;
+
+    root /var/www/html;
+    index index.html index.htm;
+    try_files $uri /index.html;
+    location / {
+        try_files $uri $uri/ = 404;
+    }
+  }
+  server {
+      listen 80;
+      server_name flaskapi.medez.co.in;
+      location / {
+                  include proxy_params;
+                  proxy_pass http://localhost:5000;
+      }
+  }
+  server {
+      listen 80;
+      server_name api.medez.co.in;
+      location / {
+          proxy_set_header Host $host;
+          proxy_pass http://localhost:8080;
+          proxy_redirect off;
+          proxy_buffering off;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-Host $host;
+          proxy_set_header X-Forwarded-Port $server_port;
+      }
+  }
+  ```
+  ```
+  systemctl restart nginx
+  ```
+  #### React Endpoint:
+  ```
+  cd client
+  ```
+  ```
+  npm install
+  ```
+  ```
+  npm run build
+  ```
+  ```
+  mv build/* /var/www/html
+  ```
+  #### NodeJS Endpoint:
+  ```
+  cd server
+  ```
+  ```
+  npm install
+  ```
+  ```
+  npm install pm2 -g
+  ```
+  ```
+  pm2 start index.js -i max
+  ```
+  #### Flask Endpoint:
+  ```
+  cd flask_server
+  ```
+  ```
+  pip install -r requirements.txt
+  ```
+  ```
+  pip install gunicorn
+  ```
+  ```
+  nano /etc/systemd/system/flaskapi.service
+  ```
+  ```
+  [Unit]
+  Description=Gunicorn instance to serve Flask
+  After=network.target
+  [Service]
+  User=ubuntu
+  Group=ubuntu
+  WorkingDirectory=/home/ubuntu/MedEZ/flask_server/
+  ExecStart=gunicorn --bind 0.0.0.0:5000 --workers 4 app:app
+  [Install]
+  WantedBy=multi-user.target
+  ```
+  ```
+  sudo systemctl start flaskapi
+  ```
+  ```
+  sudo systemctl enable flaskapi
+  ```
