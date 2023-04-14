@@ -1,5 +1,5 @@
 # MedEZ
-A HackFest'23 project made with ❤️ by
+A project made with ❤️ by
 - [@imraunn](https://github.com/imraunn)
 - [@milan0027](https://github.com/milan0027)
 - [@Mayank2602](https://github.com/Mayank2602)
