@@ -3,9 +3,11 @@ import { Container, CssBaseline } from "@mui/material";
 import { ToastContainer } from "react-toastify";
 import Box from "@mui/material/Box";
 import { ProtectedRoutes, Navbar, Footer } from "./components";
-import { Login, Register, Dashboard, SharedLayout, LandingPage, Home, Search, Upload, Compare, Calendar } from "./pages";
+import { Login, Register, Dashboard, SharedLayout, LandingPage, Home, Search, Upload, Compare, Calendar} from "./pages";
+import Team from "./pages/team/team.page"
+import Help from "./pages/help/help.page"
 import "react-toastify/dist/ReactToastify.css";
-
+import './App.css';
 function App() {
   return (
     <BrowserRouter>
@@ -33,6 +35,8 @@ function App() {
               <Route path="/upload" element={<Upload/>} />
               <Route path="/compare" element={<Compare/>} />
               <Route path="/calendar" element={<Calendar/>}/>
+              <Route path="/team" element={<Team/>}/>
+              <Route path="/help" element={<Help/>}/>
             </Route>
 
             {/* ERROR PAGE */}
