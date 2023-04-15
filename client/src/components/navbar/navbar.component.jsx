@@ -26,6 +26,8 @@ const navItemsAuth = [
   { item: "Upload", route: "/upload" },
  { item: "Calendar", route: "/calendar"},
   { item: "Dashboard", route: "/dashboard" },
+  { item: "Help", route: "/help" },
+  { item: "Our Team", route: "/team" },
 ];
 const navItemsNoAuth = [
   { item: "Login", route: "/login" },

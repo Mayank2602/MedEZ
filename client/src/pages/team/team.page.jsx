@@ -7,7 +7,7 @@ function Team() {
     <section class="section-white">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 text-center">
+          <div class="col-md-12 text-center" style={{textAlign: 'center'}}>
             <h2 class="section-title">The Team Behind MedEZ</h2>
 
             <p class="section-subtitle">{message}</p>
@@ -15,7 +15,7 @@ function Team() {
           <div className="rowCustom">
             <div className="columnCustom">
             <div class="col-sm-6 col-md-3">
-            <div class="team-item">
+            <div class="team-item" style={{height: '100vh',}}>
               <img src="./pfps/asnani.jpeg" class="team-img" alt="pic" />
               <h3>Raunak Asnani</h3>
               <div class="team-info">
@@ -63,7 +63,7 @@ function Team() {
             </div>
             <div className="columnCustom">
             <div class="col-sm-6 col-md-3">
-            <div class="team-item">
+            <div class="team-item" style={{height: '100vh',}}>
               <img src="./pfps/milan.jpeg" class="team-img" alt="pic" />
               <h3>Milan Mundhra</h3>
               <div class="team-info">
@@ -111,7 +111,7 @@ function Team() {
             </div>
             <div className="columnCustom">
             <div class="col-sm-6 col-md-3">
-            <div class="team-item">
+            <div class="team-item" style={{height: '100vh',}}>
               <img src="./pfps/muli.jpeg" class="team-img" alt="pic" />
 
               <h3>Malav Thakkar</h3>
@@ -162,7 +162,7 @@ function Team() {
             </div>
             <div className="columnCustom">
             <div class="col-sm-6 col-md-3">
-            <div class="team-item">
+            <div class="team-item" style={{height: '100vh',}}>
               <img src="./pfps/mayank.jpeg" class="team-img" alt="pic" />
 
               <h3>Mayank Narang</h3>

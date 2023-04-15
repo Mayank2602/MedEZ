@@ -15,23 +15,17 @@ function Help() {
                 webkitBackgroundClip: 'text'
             }}>Guide to use MedEZ</h1>
             <div style={{ margin: '1rem auto', width: '80%', }}>
-                <div style={{ margin: '1rem auto',}} className="plainBorder">
+                <div style={{ margin: '1rem auto', }} className="plainBorder">
 
-                    <p>You can begin using medEZ , once you login with your google account.<br />
-                        Grant permission to your Google calender to enable dosage updates on your connected devices</p>
-                    There are 3 functional sections in the navigation bar
-                    <ol>
-                        <li>Upload</li>
-                        <li>Search</li>
-                        <li>Calender</li>
-                    </ol>
+                    <p>To get started with medEZ, simply log in using your Google account. Once you're logged in, be sure to grant permission for your Google Calendar so that you can receive dosage updates on your connected devices.</p>
+                    <p>The navigation bar in medEZ is organized into three functional sections: Upload, Search, and Calendar.</p>
                 </div>
                 <div className="row plainBorder" style={{ textAlign: 'center' }}>
                     <h2>Upload</h2>
                     <hr style={{ border: '2px solid', height: '0', width: '50%', margin: '0 25%' }} />
                     <br />
                     <div className="column1" >
-                        <img src="./1.png" alt="pic" style={{ width: '150px',borderRadius:'50%' }} />
+                        <img src="./1.png" alt="pic" style={{ width: '150px', borderRadius: '50%' }} />
                     </div>
                     <div className="column2" >
                         <div style={{ textAlign: 'center' }}>
@@ -63,29 +57,27 @@ function Help() {
                 <br />
                 <div className="row" style={{ textAlign: 'center' }}>
 
-                    <div className="column plainBorder" >
+                    <div className="column plainBorder" style={{ height: '350px' }}>
                         <h2>Search</h2>
                         <hr style={{ border: '2px solid', height: '0', width: '50%', margin: '0 25%' }} />
                         <br />
                         <div style={{ textAlign: 'center' }}>
 
 
-                            <p style={{ textAlign: 'left' }}>
-                                In this section , you can manually type the name of a medicine and medEZ will fetch it's best prices across the internet.
-                            </p>
+                            <p style={{ textAlign: 'justify' }}>
+                                This section allows you to manually enter the name of a medicine, and medEZ will search the internet to find the best prices available.                            </p>
                         </div>
                     </div>
-                  
-                    <div className="column plainBorder" >
+
+                    <div className="column plainBorder" style={{ height: '350px' }}>
                         <h2>Calendar</h2>
                         <hr style={{ border: '2px solid', height: '0', width: '50%', margin: '0 25%' }} />
                         <br />
                         <div style={{ textAlign: 'center' }}>
 
 
-                            <p style={{ textAlign: 'left' }}>
-                                Use the calender to schedule updates and dosage reminders for your medication.
-
+                            <p style={{ textAlign: 'justify' }}>
+                            With the medEZ calendar feature, you can schedule updates and dosage reminders for all of your medications. Simply add your medications to the calendar, set the appropriate reminders, and medEZ will notify you when it's time to take your medication. This feature helps you stay on top of your medication schedule, ensuring that you don't miss any doses.
                             </p>
                         </div>
                     </div>
