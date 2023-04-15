@@ -21,7 +21,6 @@ import { logoutUser } from "../../features/user/userSlice";
 
 const drawerWidth = 240;
 const navItemsAuth = [
-  { item: "Home", route: "/home" },
   { item: "Search", route: "/search" },
   { item: "Upload", route: "/upload" },
  { item: "Calendar", route: "/calendar"},
@@ -29,7 +28,8 @@ const navItemsAuth = [
 ];
 const navItemsNoAuth = [
   { item: "Login", route: "/login" },
-  { item: "Register", route: "/register" },
+  { item: "Help", route: "/help" },
+  { item: "Contact Us", route: "/contactus"}
 ];
 const darkTheme = createTheme({
   palette: {
