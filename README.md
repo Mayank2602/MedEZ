@@ -37,17 +37,26 @@ In today's world, people face the issue of having to compare prices of medicines
 
 ### Results:
 
-Search results for Crocin:
+*Search results for Crocin:*
+<br/><br/>
 ![Crocin](</screenshots/Screenshot (06).png?raw=true>)
-Search results for Diamox:
+<br/><br/>
+*Search results for Diamox:*
+<br/><br/>
 ![Diamox](</screenshots/Screenshot (07).png?raw=true>)
-Showcasing alternatives:
+<br/><br/>
+*Showcasing alternatives:*
+<br/><br/>
 ![Alternatives](</screenshots/Screenshot (08).png?raw=true>)
-Sample prescription:
+<br/><br/>
+*Sample prescription:*
+<br/><br/>
 ![Sample Prescription](/screenshots/prescription.jpeg?raw=true)
-Prescription OCR:
+<br/><br/>
+*Prescription OCR:*
+<br/><br/>
 ![Prescription OCR](</screenshots/Screenshot (09).png?raw=true>)
-
+<br/><br/>
 ### Installation steps:
 
 To install the application, follow these steps:
