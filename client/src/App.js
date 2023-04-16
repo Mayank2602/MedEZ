@@ -7,7 +7,6 @@ import { Login, Register, Dashboard, SharedLayout, LandingPage, Home, Search, Up
 import Team from "./pages/team/team.page"
 import Help from "./pages/help/help.page"
 import "react-toastify/dist/ReactToastify.css";
-import './App.css';
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +19,8 @@ function App() {
             <Route exact path="/" element={<LandingPage/>} />
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/register" element={<Register />}></Route>
+            <Route path="/team" element={<Team/>}/>
+            <Route path="/help" element={<Help/>}/>
             <Route
               path="/"
               element={
@@ -35,8 +36,6 @@ function App() {
               <Route path="/upload" element={<Upload/>} />
               <Route path="/compare" element={<Compare/>} />
               <Route path="/calendar" element={<Calendar/>}/>
-              <Route path="/team" element={<Team/>}/>
-              <Route path="/help" element={<Help/>}/>
             </Route>
 
             {/* ERROR PAGE */}

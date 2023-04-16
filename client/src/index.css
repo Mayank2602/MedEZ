@@ -90,7 +90,271 @@ code {
     animation: ekg 1.5s linear forwards infinite;
   }
   
+  .section-white {
+    background: #fff;
+    padding: 70px 0;
+  }
   
+  .team-item {
+    background: #f4f5f6;
+    text-align: center;
+    margin: 20px 0;
+    width: 15vw;
+    padding: 10px;
+    border-radius: 8px 8px;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+  }
+  
+  .team-item:hover {
+    background: #3956de;
+    color: white;
+  }
+  
+  .team-item h3 {
+    margin: 20px 0 1px 0 !important;
+    color: #454545;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    -webkit-transition: all .25s ease-in-out;
+  }
+  
+  .section-subtitle {
+    white-space: pre-line;
+  }
+  
+  .team-item:hover h3 {
+    color: #ddd;
+  }
+  
+  .team-info {
+    display: block;
+    margin-bottom: 0;
+  }
+  
+  .team-info p {
+    color: #acacac;
+    font-style: italic;
+  }
+  
+  .team-info::after {
+    background: #008aff;
+    background: -webkit-linear-gradient(135deg, #6B02FF 0%, #985BEF 100%);
+    background: -o-linear-gradient(bottom right, #6B02FF, #985BEF);
+    background: -moz-linear-gradient(bottom right, #008aff, #1ad2fd);
+    background: linear-gradient(135deg, #6B02FF 0%, #985BEF 100%);
+    display: inline-block;
+    vertical-align: middle;
+    content: "";
+    width: 50px;
+    height: 3px;
+  }
+  
+  .team-img {
+    max-width: 140px;
+    padding: 6px 6px;
+    background-color: #dedede;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+  }
+  
+  ul.team-icon {
+    margin-top: 25px;
+  }
+  
+  ul.team-icon li {
+    display: inline-block;
+    margin: 0 3px;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+  }
+  
+  ul.team-icon li a {
+    margin: 0;
+    display: inline-block;
+    padding: 8px 8px;
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+    line-height: 18px;
+    background-color: #fff;
+    border-radius: 50%;
+    color: #fff;
+  }
+  
+  ul.team-icon li a.twitter {
+    background-color: #4099ff;
+  }
+  
+  ul.team-icon li a.pinterest {
+    background-color: #C92228;
+  }
+  
+  ul.team-icon li a.facebook {
+    background-color: #3b5998;
+  }
+  
+  ul.team-icon li a.dribble {
+    background-color: #ea4c89;
+  }
+  
+  .team-icon li a:hover {
+    color: #dedede;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Create two equal columns that floats next to each other */
+  .column1 {
+    float: left;
+    width: 30%;
+    padding: 10px;
+  
+  }
+  
+  .column2 {
+    float: left;
+    width: 70%;
+    padding: 10px;
+  
+  }
+  
+  .column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+  
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column1 {
+      width: 100%;
+    }
+    .column2 {
+      width: 100%;
+    }
+    .column {
+      width: 100%;
+    }
+  }
+  
+  .gradient-border-rounded,
+  .gradient-border {
+    /* display: flex; */
+    /* text-align: center; */
+    /* font-size: 1.8rem; */
+    background: #dce0ff;
+    padding: 20px;
+  }
+  
+  .gradient-border-rounded span,
+  .gradient-border span {
+    margin: auto;
+  }
+  
+  /* --- Градієнтна рамка --- */
+  
+  .gradient-border {
+    width: 12rem;
+    height: 6rem;
+    border: 0.6rem solid;
+    border-image-source: linear-gradient(120deg, #40c9ff 0%, #e81cff 100%);
+    border-image-slice: 1;
+  }
+  
+  /* --- Градієнтна рамка з заокругленням --- */
+  
+  .gradient-border-rounded {
+    position: relative;
+    border-radius: 4rem;
+    /* width: 12rem; */
+    /* height: 6rem; */
+  }
+  
+  .gradient-border-rounded::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 3rem;
+    padding: 0.5rem;
+    /* тут padding замість border-width */
+    background: linear-gradient(120deg, #40c9ff 0%, #e81cff 100%);
+    /* 
+    * Магічні властивості, де
+    * [1] – охоплює лише область вмісту (без padding, який в нас замість border)
+    * [2] – охоплює всю площину елемента
+    * [3] – це виключить перший шар із другого, тож видимою буде лише область заповнення
+    */
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      /* [1] */
+      linear-gradient(#fff 0 0);
+    /* [2] */
+    -webkit-mask-composite: xor;
+    /* [3] для підтримки браузерів */
+    mask-composite: exclude;
+    /* [3] */
+  }
+  .plainBorder{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    /* box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
+    padding:20px;
+  
+  }
+  * {
+    box-sizing: border-box;
+    }
+    
+    /* Container for flexboxes */
+    .rowCustom {
+    display: flex;
+    flex-wrap: wrap;
+    }
+    
+    /* Create four equal columns */
+    .columnCustom {
+    flex: 25%;
+    padding: 20px;
+    }
+    
+    /* On screens that are 992px wide or less, go from four columns to two columns */
+    @media screen and (max-width: 992px) {
+    .columnCustom {
+      flex: 50%;
+    }
+    }
+    
+    /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+    .rowCustom {
+      flex-direction: column;
+    }
+    }
   
   
   @keyframes ekg {

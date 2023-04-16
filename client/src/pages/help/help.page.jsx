@@ -6,6 +6,7 @@ function Help() {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', }}>
             <h1 style={{
+                fontFamily:'Consolas',
                 margin: '1rem auto',
                 fontSize: '40px',
                 fontWeight: '600',

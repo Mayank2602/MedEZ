@@ -4,21 +4,21 @@ import React from "react";
 function Team() {
   let message = `Simplifying your medical needs everyday`;
   return (
-    <section class="section-white">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center" style={{textAlign: 'center'}}>
-            <h2 class="section-title">The Team Behind MedEZ</h2>
+    <section className="section-white">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12 text-center" style={{textAlign: 'center'}}>
+            <h1 className="section-title">The Team Behind MedEZ</h1>
 
-            <p class="section-subtitle">{message}</p>
+            <p className="section-subtitle">{message}</p>
           </div>
           <div className="rowCustom">
             <div className="columnCustom">
-            <div class="col-sm-6 col-md-3">
-            <div class="team-item" style={{height: '100vh',}}>
-              <img src="./pfps/asnani.jpeg" class="team-img" alt="pic" />
+            <div className="col-sm-6 col-md-3">
+            <div className="team-item" style={{height: '100vh',}}>
+              <img src="./pfps/asnani.jpeg" className="team-img" alt="pic" />
               <h3>Raunak Asnani</h3>
-              <div class="team-info">
+              <div className="team-info">
                 <p>The Python</p>
               </div>
               <p>
@@ -27,34 +27,34 @@ function Team() {
                 existed
               </p>
 
-              <ul class="team-icon">
+              <ul className="team-icon">
                 <li>
                   <a
                     href="https://www.linkedin.com/in/raunak-asnani/"
-                    class="linkedin"
+                    className="linkedin"
                     style={{ background: "blue" }}
                     target="blank"
                   >
-                    <i class="fa fa-linkedin"></i>
+                    <i className="fa fa-linkedin"></i>
                   </a>
                 </li>
 
                 <li>
                   <a
                     href="https://github.com/imraunn"
-                    class="github"
+                    className="github"
                     style={{ background: "black" }}
                   >
-                    <i class="fa fa-github"></i>
+                    <i className="fa fa-github"></i>
                   </a>
                 </li>
                 <li>
                   <a
                     href="#"
-                    class="telegram"
+                    className="telegram"
                     style={{ background: "#0088cc" }}
                   >
-                    <i class="fa fa-telegram"></i>
+                    <i className="fa fa-telegram"></i>
                   </a>
                 </li>
               </ul>
@@ -62,11 +62,11 @@ function Team() {
           </div>
             </div>
             <div className="columnCustom">
-            <div class="col-sm-6 col-md-3">
-            <div class="team-item" style={{height: '100vh',}}>
-              <img src="./pfps/milan.jpeg" class="team-img" alt="pic" />
+            <div className="col-sm-6 col-md-3">
+            <div className="team-item" style={{height: '100vh',}}>
+              <img src="./pfps/milan.jpeg" className="team-img" alt="pic" />
               <h3>Milan Mundhra</h3>
-              <div class="team-info">
+              <div className="team-info">
                 <p>The API Maestro</p>
               </div>
               <p>
@@ -74,35 +74,35 @@ function Team() {
                 code on the client side
               </p>
 
-              <ul class="team-icon">
+              <ul className="team-icon">
                 <li>
                   <a
                     href="https://www.linkedin.com/in/milanmundhra27/"
-                    class="linkedin"
+                    className="linkedin"
                     style={{ background: "blue" }}
                     target="blank"
                   >
-                    <i class="fa fa-linkedin"></i>
+                    <i className="fa fa-linkedin"></i>
                   </a>
                 </li>
 
                 <li>
                   <a
                     href="https://github.com/milan0027"
-                    class="github"
+                    className="github"
                     style={{ background: "black" }}
                   >
-                    <i class="fa fa-github"></i>
+                    <i className="fa fa-github"></i>
                   </a>
                 </li>
 
                 <li>
                   <a
                     href="#"
-                    class="telegram"
+                    className="telegram"
                     style={{ background: "#0088cc" }}
                   >
-                    <i class="fa fa-telegram"></i>
+                    <i className="fa fa-telegram"></i>
                   </a>
                 </li>
               </ul>
@@ -110,13 +110,13 @@ function Team() {
           </div>
             </div>
             <div className="columnCustom">
-            <div class="col-sm-6 col-md-3">
-            <div class="team-item" style={{height: '100vh',}}>
-              <img src="./pfps/muli.jpeg" class="team-img" alt="pic" />
+            <div className="col-sm-6 col-md-3">
+            <div className="team-item" style={{height: '100vh',}}>
+              <img src="./pfps/muli.jpeg" className="team-img" alt="pic" />
 
               <h3>Malav Thakkar</h3>
 
-              <div class="team-info">
+              <div className="team-info">
                 <p>The All Rounder</p>
               </div>
 
@@ -125,35 +125,35 @@ function Team() {
                 often valuable in building the product
               </p>
 
-              <ul class="team-icon">
+              <ul className="team-icon">
                 <li>
                   <a
                     href="https://www.linkedin.com/in/malav-thakkar-011517200/"
-                    class="linkedin"
+                    className="linkedin"
                     style={{ background: "blue" }}
                     target="blank"
                   >
-                    <i class="fa fa-linkedin"></i>
+                    <i className="fa fa-linkedin"></i>
                   </a>
                 </li>
 
                 <li>
                   <a
                     href="https://github.com/malav22"
-                    class="github"
+                    className="github"
                     style={{ background: "black" }}
                   >
-                    <i class="fa fa-github"></i>
+                    <i className="fa fa-github"></i>
                   </a>
                 </li>
 
                 <li>
                   <a
                     href="https://telegram.me/"
-                    class="telegram"
+                    className="telegram"
                     style={{ background: "#0088cc" }}
                   >
-                    <i class="fa fa-telegram"></i>
+                    <i className="fa fa-telegram"></i>
                   </a>
                 </li>
               </ul>
@@ -161,13 +161,13 @@ function Team() {
           </div>
             </div>
             <div className="columnCustom">
-            <div class="col-sm-6 col-md-3">
-            <div class="team-item" style={{height: '100vh',}}>
-              <img src="./pfps/mayank.jpeg" class="team-img" alt="pic" />
+            <div className="col-sm-6 col-md-3">
+            <div className="team-item" style={{height: '100vh',}}>
+              <img src="./pfps/mayank.jpeg" className="team-img" alt="pic" />
 
               <h3>Mayank Narang</h3>
 
-              <div class="team-info">
+              <div className="team-info">
                 <p>The Curious Geek</p>
               </div>
 
@@ -175,35 +175,35 @@ function Team() {
                 Mayank has a knack for learning tech and is another all rounder
                 team player with an overall experience of development
               </p>
-              <ul class="team-icon">
+              <ul className="team-icon">
                 <li>
                   <a
                     href="https://www.linkedin.com/in/mayank-narang-a9562a202/"
-                    class="linkedin"
+                    className="linkedin"
                     style={{ background: "blue" }}
                     target="blank"
                   >
-                    <i class="fa fa-linkedin"></i>
+                    <i className="fa fa-linkedin"></i>
                   </a>
                 </li>
 
                 <li>
                   <a
                     href="https://github.com/Mayank2602"
-                    class="github"
+                    className="github"
                     style={{ background: "black" }}
                   >
-                    <i class="fa fa-github"></i>
+                    <i className="fa fa-github"></i>
                   </a>
                 </li>
 
                 <li>
                   <a
                     href="https://telegram.me/Mayank2602"
-                    class="telegram"
+                    className="telegram"
                     style={{ background: "#0088cc" }}
                   >
-                    <i class="fa fa-telegram"></i>
+                    <i className="fa fa-telegram"></i>
                   </a>
                 </li>
               </ul>
