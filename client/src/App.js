@@ -3,25 +3,23 @@ import { Container, CssBaseline } from "@mui/material";
 import { ToastContainer } from "react-toastify";
 import Box from "@mui/material/Box";
 import { ProtectedRoutes, Navbar, Footer } from "./components";
-import { Login, Register, Dashboard, SharedLayout, LandingPage, Home, Search, Upload, Compare, Calendar } from "./pages";
+import { Login, Register, Dashboard, SharedLayout, LandingPage, Home, Search, Upload, Compare, Calendar} from "./pages";
+import Team from "./pages/team/team.page"
+import Help from "./pages/help/help.page"
 import "react-toastify/dist/ReactToastify.css";
-import Help from "./pages/landingPage/help.page";
-import ContactUs from "./pages/landingPage/contactus.page";
-
+import './App.css';
 function App() {
   return (
     <BrowserRouter>
       <CssBaseline />
       <Box sx={{ position: "relative", minHeight: "100vh" }}>
         <Navbar />
-        <Box sx={{ paddingTop: "4rem", paddingBottom: "4rem" }}>
-        <Container maxWidth={false} sx={{ maxWidth: '90%' }}>
+        <Box sx={{ paddingTop: "5em", paddingBottom: "4rem" }}>
+        <Container maxWidth={false} sx={{ maxWidth: '85%' }}>
           <Routes>
             <Route exact path="/" element={<LandingPage/>} />
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/register" element={<Register />}></Route>
-            <Route exact path="/help" element={<Help/>}></Route>
-            <Route exact path="/contactus" element={<ContactUs/>}></Route>
             <Route
               path="/"
               element={
@@ -37,6 +35,8 @@ function App() {
               <Route path="/upload" element={<Upload/>} />
               <Route path="/compare" element={<Compare/>} />
               <Route path="/calendar" element={<Calendar/>}/>
+              <Route path="/team" element={<Team/>}/>
+              <Route path="/help" element={<Help/>}/>
             </Route>
 
             {/* ERROR PAGE */}
