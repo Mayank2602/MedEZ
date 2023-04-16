@@ -23,7 +23,7 @@ In today's world, people face the issue of having to compare prices of medicines
 
 ### Methodology:
 
-![Alt text](/assets/flow.png?raw=true "Title")
+![Flow Chart](/assets/flow.png?raw=true)
 
 ### Tech Stack:
 
@@ -37,7 +37,16 @@ In today's world, people face the issue of having to compare prices of medicines
 
 ### Results:
 
-Boilerplate text for results
+Search results for Crocin:
+![Crocin](</screenshots/Screenshot (06).png?raw=true>)
+Search results for Diamox:
+![Diamox](</screenshots/Screenshot (07).png?raw=true>)
+Showcasing alternatives:
+![Alternatives](</screenshots/Screenshot (08).png?raw=true>)
+Sample prescription:
+![Sample Prescription](/screenshots/prescription.jpeg?raw=true)
+Prescription OCR:
+![Prescription OCR](</screenshots/Screenshot (09).png?raw=true>)
 
 ### Installation steps:
 
