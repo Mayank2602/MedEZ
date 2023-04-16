@@ -43,10 +43,15 @@ def onemg(name):
     url=f"https://www.1mg.com{href}"
     name=unicode_patch(name)
     price=unicode_patch(price)
+
+    newprice=""
+    for char in price:
+        if char in '0123456789.':
+            newprice+=char
     url=unicode_patch(url)
     details={
                 "name":name.strip(),
-                "price":float(price.strip()),
+                "price":float(newprice.strip()),
                 "url":url.strip(),
                 'source':'onemg'
             }
