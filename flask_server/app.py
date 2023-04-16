@@ -61,6 +61,7 @@ def search():
             del apollo_response["desc"]
             response["sources"].append(apollo_response)
         else:
+            print(function(name))
             temporary=json.loads(function(name))
             temporary["accuracy"]=factor(name.lower().replace(" ",""),temporary["name"].lower().replace(" ",""))
             response["sources"].append(temporary)

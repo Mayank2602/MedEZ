@@ -5,17 +5,22 @@ def find_productid(name):
     URL=f"https://search.sastasundar.com/search_list?q={name}"
     r=requests.get(URL)
     obj=json.loads(r.text)
-    productid=obj["products"][0][8]
+    try:
+        productid=obj["products"][0][8]
+    except:
+        productid=-1
     return productid
 
 def find_alternative(name):
     productid=find_productid(name)
+    alternatives=[]
+    if productid==-1:
+        return alternatives
     URL=f"https://search.sastasundar.com/similar_products?product_id={productid}"
     r=requests.get(URL)
     obj=json.loads(r.text)
     products=obj["products"]
 
-    alternatives=[]
     for product in products:
         alternatives.append(product[0].strip())
     return alternatives

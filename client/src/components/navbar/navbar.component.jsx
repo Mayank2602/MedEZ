@@ -18,6 +18,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Button from "@mui/material/Button";
 import { logoutUser } from "../../features/user/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 const navItemsAuth = [
@@ -45,8 +46,7 @@ function DrawerAppBar(props) {
 
   const dispatch = useDispatch();
   const token = useSelector((store) => store.user.token);
-  const access_token = useSelector((store) => store.user.access_token);
-
+  const navigate = useNavigate();
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
@@ -58,7 +58,7 @@ function DrawerAppBar(props) {
       </Typography>
       <Divider />
       <List>
-        {token && access_token ? (
+        {token ? (
           <>
             {navItemsAuth.map((item) => (
               <ListItemComponent {...item} key={item.item} />
@@ -101,6 +101,7 @@ function DrawerAppBar(props) {
               variant='h6'
               component='div'
               sx={{ flexGrow: 1, display: "block" }}
+              onClick={() => navigate('/')}
             >
               MedEZ
             </Typography>

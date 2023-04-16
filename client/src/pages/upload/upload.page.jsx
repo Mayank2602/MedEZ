@@ -27,7 +27,7 @@ const Upload = () => {
   const isFileLoading = useSelector((store) => store.result.isFileLoading)
   return (
     <>
-     <h1 style={{fontFamily:'consolas'}}>Upload Your Prescription</h1>
+     <h1 style={{fontFamily:'consolas',marginBottom:'1rem'}}>Upload Your Prescription</h1>
          
 
         <Button variant="outlined" component="label" sx={{marginRight:'15px',color:'teal'}}>

@@ -9,7 +9,8 @@ default={
     "name":"",
     "price":"",
     "url":"",
-    "source":""
+    "source":"",
+    "desc":""
 }
 def apollo(name):
     URL=f"https://www.apollopharmacy.in/search-medicines/{name}"
@@ -18,22 +19,28 @@ def apollo(name):
     try:
      name=soup.find('p',class_="ProductCard_productName__f82e9")
     except:
-       return default
+       return json.dumps(default)
     try:
      price=soup.find('div',class_="ProductCard_priceGroup__V3kKR")
     except:
-       return default
+       return json.dumps(default)
     try:
      url = soup.find('a',class_="ProductCard_proDesMain__LWq_f")
     except:
-     return default
+     return json.dumps(default)
 
-    for match in price.findAll('span'):
-        match.decompose()
+    try:
+        for match in price.findAll('span'):
+            match.decompose()
+    except:
+        return json.dumps(default)
 
-    name=name.text
-    price=price.text
-    url=f"https://www.apollopharmacy.in{url['href']}"
+    try:
+        name=name.text
+        price=price.text
+        url=f"https://www.apollopharmacy.in{url['href']}"
+    except:
+        return json.dumps(default)
 
     name=unicode_patch(name)
     price=unicode_patch(price)

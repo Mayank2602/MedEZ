@@ -13,7 +13,7 @@ function App() {
       <CssBaseline />
       <Box sx={{ position: "relative", minHeight: "100vh" }}>
         <Navbar />
-        <Box sx={{ paddingTop: "5em", paddingBottom: "4rem" }}>
+        <Box sx={{ paddingTop: "5rem", paddingBottom: "4rem" }}>
         <Container maxWidth={false} sx={{ maxWidth: '85%' }}>
           <Routes>
             <Route exact path="/" element={<LandingPage/>} />

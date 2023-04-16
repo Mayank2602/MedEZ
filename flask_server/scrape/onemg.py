@@ -23,14 +23,14 @@ def onemg(name):
         try:
             name=soup.find('span',class_="style__pro-title___3zxNC").text
         except:
-            return default
+            return json.dumps(default)
     try:
         price=soup.find('div',class_="style__price-tag___KzOkY").text
     except:
         try:
             price=soup.find('div',class_="style__price-tag___B2csA").text
         except:
-            return default
+            return json.dumps(default)
     try:
         href=soup.find('a', class_="style__product-link___1hWpa")["href"]
     except:
@@ -38,7 +38,7 @@ def onemg(name):
             body=soup.find('div',class_="style__horizontal-card___1Zwmt style__height-158___1XIvD")
             href=body.find('a')["href"]
         except:
-            return default
+            return json.dumps(default)
 
     url=f"https://www.1mg.com{href}"
     name=unicode_patch(name)

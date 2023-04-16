@@ -62,3 +62,15 @@ export const addToCalendarThunk = async (obj, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.response.data.msg);
   }
 };
+
+export const getDoseThunk =  async (_, thunkAPI) => {
+  try {
+    //const user = thunkAPI.getState().user.user
+    //console.log(medicineName)
+    const resp = await customFetch.get(`${process.env.REACT_APP_HOSTNAME}/api/item/getdose`, authHeader(thunkAPI));
+    console.log(resp.data);
+    return resp.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response.data.msg);
+  }
+};

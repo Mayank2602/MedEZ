@@ -1,8 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setOption } from "../../features/navitem/navitemSlice";
+
 
 function Help() {
-
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setOption('Help'))
+    },[])
     return (
         <div style={{ display: 'flex', flexDirection: 'column', }}>
             <h1 style={{
@@ -18,8 +25,8 @@ function Help() {
             <div style={{ margin: '1rem auto', width: '80%', }}>
                 <div style={{ margin: '1rem auto', }} className="plainBorder">
 
-                    <p>To get started with medEZ, simply log in using your Google account. Once you're logged in, be sure to grant permission for your Google Calendar so that you can receive dosage updates on your connected devices.</p>
-                    <p>The navigation bar in medEZ is organized into three functional sections: Upload, Search, and Calendar.</p>
+                    <p>To get started with MedEZ, simply log in using your Google account. Once you're logged in, be sure to grant permission for your Google Calendar so that you can receive dosage updates on your connected devices.</p>
+                    <p>The navigation bar in MedEZ is organized into three functional sections: Upload, Search, and Calendar.</p>
                 </div>
                 <div className="row plainBorder" style={{ textAlign: 'center' }}>
                     <h2>Upload</h2>
@@ -41,7 +48,7 @@ function Help() {
                                         Upload your prescription as an image or a pdf file.
                                     </li>
                                     <li>
-                                        medEZ extracts the medicine names from the prescription once you hit submit.
+                                        MedEZ extracts the medicine names from the prescription once you hit submit.
                                     </li>
                                     <li>
                                         Hit compare to reach the page to actually buy medicines.
@@ -66,7 +73,9 @@ function Help() {
 
 
                             <p style={{ textAlign: 'justify' }}>
-                                This section allows you to manually enter the name of a medicine, and medEZ will search the internet to find the best prices available.                            </p>
+                                This section allows you to manually enter the name of a medicine, and MedEZ will search the internet to find the best prices available. 
+                                You will be provided with a list of various websites for easy comparison along with their alternatives. An overall accuracy
+                                will be shown to make informed decisions.                           </p>
                         </div>
                     </div>
 
@@ -78,7 +87,7 @@ function Help() {
 
 
                             <p style={{ textAlign: 'justify' }}>
-                            With the medEZ calendar feature, you can schedule updates and dosage reminders for all of your medications. Simply add your medications to the calendar, set the appropriate reminders, and medEZ will notify you when it's time to take your medication. This feature helps you stay on top of your medication schedule, ensuring that you don't miss any doses.
+                            With the MedEZ calendar feature, you can schedule updates and dosage reminders for all of your medications. Simply add your medications to the calendar, set the appropriate reminders, and MedEZ will notify you when it's time to take your medication. This feature helps you stay on top of your medication schedule.
                             </p>
                         </div>
                     </div>

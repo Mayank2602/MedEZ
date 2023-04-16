@@ -2,11 +2,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   addToCalendarThunk,
   altResultThunk,
+  getDoseThunk,
   loadResultThunk,
   multiResultThunk,
   uploadFileThunk,
 } from "./resultThunk";
 import { toast } from "react-toastify";
+import moment from "moment";
 
 const initialState = {
   isLoading: false,
@@ -17,6 +19,10 @@ const initialState = {
   isAltLoading: false,
   multiResult: null,
   isMultiLoading: false,
+  dose: null,
+  isDoseLoading: false,
+  list: [],
+
 };
 
 export const loadResult = createAsyncThunk(
@@ -33,10 +39,24 @@ export const multiResult = createAsyncThunk(
   multiResultThunk
 );
 export const addToCalendar = createAsyncThunk("result/addToCalendar", addToCalendarThunk);
+export const getDose = createAsyncThunk("result/getDose", getDoseThunk);
 const userSlice = createSlice({
   name: "result",
   initialState,
-  reducers: {},
+  reducers: {
+    setDate: (state, {payload}) => {
+      console.log(payload)
+      if(state.dose){
+        const list = state.dose.filter(item => item.date === payload);
+        if(list.length){
+          state.list = list[0].list;
+        }else{
+          state.list = [];
+        }
+        }
+       
+    }
+  },
   extraReducers: {
     [loadResult.pending]: (state) => {
       state.result = null;
@@ -53,7 +73,7 @@ const userSlice = createSlice({
       toast.error(payload);
     },
     [uploadFile.pending]: (state) => {
-      state.resultFile = null;
+      state.fileResult = null;
       state.isFileLoading = true;
     },
     [uploadFile.fulfilled]: (state, { payload }) => {
@@ -101,8 +121,21 @@ const userSlice = createSlice({
     [addToCalendar.rejected]: (state, { payload }) => {
       toast.error(payload);
     },
+    [getDose.pending]: (state) => {
+      state.isDoseLoading = true;
+    },
+    [getDose.fulfilled]: (state, {payload}) => {
+      const { dose } = payload;
+      state.isDoseLoading = false;
+      state.dose = dose;
+    },
+    [getDose.rejected]: (state,{payload})=>{
+      state.isDoseLoading = false;
+      toast.error(payload);
+    }
+    
   },
 });
 
-//export const {  } = userSlice.actions;
+export const { setDate } = userSlice.actions;
 export default userSlice.reducer;

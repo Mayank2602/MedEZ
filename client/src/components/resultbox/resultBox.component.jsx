@@ -17,7 +17,7 @@ const ResultBox = ({result}) => {
     <h2 style={{fontFamily:'consolas'}}>Results</h2>
     {result.sources.map((item)=> <ResultCard {...item} key={item.url} />)}
     <div>
-    <h2 style={{fontFamily:'consolas'}}>Alternatives</h2>
+    <h2 style={{fontFamily:'consolas',marginTop:'1rem'}}>Alternatives</h2>
     {isAltLoading || !alternatives ? <Loader/>:<>
        {alternatives.map((alt,index) => <ResultCard {...alt} key={index} />)}
     </>}

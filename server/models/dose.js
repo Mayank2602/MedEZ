@@ -3,7 +3,12 @@ const Schema = mongoose.Schema;
 
 const DoseSchema = new Schema({
   date: {
-    type: String,
+    type: Number,
+    required:true,
+  },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   },
   list: [{
     type: String,

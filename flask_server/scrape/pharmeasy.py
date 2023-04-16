@@ -24,7 +24,7 @@ def pharmeasy(name):
             price=soup.find('div',class_=('ProductCard_ourPrice__yDytt')).text
             link=div.find('a',class_='ProductCard_medicineUnitWrapper__eoLpy ProductCard_defaultWrapper__nxV0R').get('href')
         except:
-            return default
+            return json.dumps(default)
 
     name=unicode_patch(name)
     price=unicode_patch(price).replace("*","").replace("MRP","")

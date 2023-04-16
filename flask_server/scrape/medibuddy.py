@@ -24,9 +24,9 @@ def medibuddy(name):
             name=unicode_patch(name)
             price=unicode_patch(price).strip()
         else:
-            return default
+            return json.dumps(default)
     except:
-        return default
+        return json.dumps(default)
     
     details={
         "name":name.strip(),

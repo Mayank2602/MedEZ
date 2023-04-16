@@ -2,18 +2,15 @@ const User = require("../models/user");
 const Item = require("../models/item");
 const Dose = require("../models/dose");
 const axios = require("axios");
+const moment = require('moment');
 const { google } = require("googleapis");
 
-const start = async (req, res) => {
+const getdose = async (req, res) => {
   try {
-    const data = await axios.get("http://localhost:5000/search?name=crocin", {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-      },
-    });
-    console.log(data.data);
-    return res.status(200).json({ data: data.data });
+    
+    const userId = req.user.userId;
+    const dose = await Dose.find({userId});
+    return res.status(200).json({ dose });
   } catch (e) {
     return res.status(400).send({ msg: "Server Error" });
   }
@@ -21,6 +18,7 @@ const start = async (req, res) => {
 
 const submit = async (req, res) => {
   try {
+   
     const oauth2client = new google.auth.OAuth2(
       process.env.CLIENT_ID,
       process.env.CLIENT_SECRET,
@@ -28,11 +26,28 @@ const submit = async (req, res) => {
     );
     const userId = req.user.userId;
     const {medicine,dose,doseFreq,dayFreq,startDate,count}=req.body;
+    console.log(req.body)
     const user = await User.findById(userId);
-    const st = new Date(startDate);
+    const date = moment(startDate).format('YYYY-MM-DD');
+    let st = (new Date(date)).getTime();
     for(let i = 1; i <= count ; i++)
     {
-        const d = await Dose.create()
+        
+        const d = await Dose.findOne({$and:[{
+          date:st
+        },{userId}]});
+        if(d){
+          d.list.push(`Take ${medicine} ${dose} for ${doseFreq} times`)
+          await d.save();
+        }
+        else{
+          await Dose.create({
+            date: st,
+            userId,
+            list:[`Take ${medicine} ${dose} for ${doseFreq} times`]
+          })
+        }
+        st+=86400000*dayFreq;   
     }
     const { tokens } = user;
     oauth2client.setCredentials(tokens);
@@ -48,11 +63,11 @@ const submit = async (req, res) => {
           `RRULE:FREQ=DAILY;INTERVAL=${dayFreq};COUNT=${count}`
         ],
         start: {
-          date: startDate,
+          date,
           timeZone: "Asia/Kolkata",
         },
         end: {
-          date: startDate,
+          date,
           timeZone: 'Asia/Kolkata'
         }
       
@@ -62,9 +77,9 @@ const submit = async (req, res) => {
     //user code
     return res.status(200).json({ msg:'Added to Calendar' });
   } catch (e) {
-    console.log(e.response.data);
+    console.log(e);
     return res.status(400).send({ msg: "Server Error" });
   }
 };
 
-module.exports = { start, submit };
+module.exports = { getdose, submit };
