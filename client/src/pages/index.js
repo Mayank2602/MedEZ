@@ -8,4 +8,6 @@ import Search from "./search/search.page";
 import Upload from "./upload/upload.page";
 import Compare from "./compare/compare.page";
 import Calendar from "./calendar/calendar.page";
+import Help from "./landingPage/help.page";
+import ContactUs from "./landingPage/contactus.page";
 export {Home, Dashboard,Search,Upload, Login, Register, SharedLayout, LandingPage, Compare, Calendar};

@@ -51,11 +51,11 @@ export const multiResultThunk = async (medicineName, thunkAPI) => {
   }
 };
 
-export const addToCalendarThunk = async (_, thunkAPI) => {
+export const addToCalendarThunk = async (obj, thunkAPI) => {
   try {
     //const user = thunkAPI.getState().user.user
     //console.log(medicineName)
-    const resp = await customFetch.get(`${process.env.REACT_APP_HOSTNAME}/api/item/submit`, authHeader(thunkAPI));
+    const resp = await customFetch.post(`${process.env.REACT_APP_HOSTNAME}/api/item/submit`,obj, authHeader(thunkAPI));
     console.log(resp.data);
     return resp.data;
   } catch (error) {

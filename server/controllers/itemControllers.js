@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const Item = require("../models/item");
+const Dose = require("../models/dose");
 const axios = require("axios");
 const { google } = require("googleapis");
 
@@ -26,7 +27,13 @@ const submit = async (req, res) => {
       process.env.REDIRECT_URI || "http://localhost:3000"
     );
     const userId = req.user.userId;
+    const {medicine,dose,doseFreq,dayFreq,startDate,count}=req.body;
     const user = await User.findById(userId);
+    const st = new Date(startDate);
+    for(let i = 1; i <= count ; i++)
+    {
+        const d = await Dose.create()
+    }
     const { tokens } = user;
     oauth2client.setCredentials(tokens);
     const calendar = google.calendar({ version: "v3", oauth2client });
@@ -35,21 +42,25 @@ const submit = async (req, res) => {
       auth: oauth2client,
       calendarId: "primary",
       resource: {
-        summary: "Test event",
-        description: "Google add event testing.",
+        summary: medicine,
+        description: `Take ${dose} for ${doseFreq} times`,
+        recurrence:[
+          `RRULE:FREQ=DAILY;INTERVAL=${dayFreq};COUNT=${count}`
+        ],
         start: {
-          dateTime: "2023-04-14T01:00:00-07:00",
+          date: startDate,
           timeZone: "Asia/Kolkata",
         },
         end: {
-          dateTime: "2023-04-15T05:00:00-07:00",
-          timeZone: "Asia/Kolkata",
-        },
+          date: startDate,
+          timeZone: 'Asia/Kolkata'
+        }
+      
       },
     });
    // console.log(resp);
     //user code
-    return res.status(200).json({ user });
+    return res.status(200).json({ msg:'Added to Calendar' });
   } catch (e) {
     console.log(e.response.data);
     return res.status(400).send({ msg: "Server Error" });
